@@ -66,7 +66,7 @@ const NavBar = () => {
         activeClassName={styles.Active}
         to="/login"
       >
-        Login
+        login
       </NavLink>
       <NavLink
         to="/signup"
