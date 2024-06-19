@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-
 import styles from "../../styles/JokeCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-import { FormControl, FormGroup, FormLabel } from "react-bootstrap";
+import { Alert, FormControl, FormGroup, FormLabel } from "react-bootstrap";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { axiosReq } from "../../api/axiosDefaults";
 
 function JokeCreateForm() {
     
@@ -19,6 +19,7 @@ function JokeCreateForm() {
     content: ""
   })
   const {title, content} = jokeData;
+  const history = useHistory()
 
   const handleChange = (event) => {
     try{
@@ -28,6 +29,22 @@ function JokeCreateForm() {
         })
     } catch(err){
         console.log(err)
+    }
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    const formData = new FormData();
+    formData.append('title', title)
+    formData.append('content', content)
+    try{
+        const {data} = await axiosReq.post('/jokes/', formData)
+        history.push(`/jokes/${data.id}`) //Why doesnt it work? Id is a field in jokes model
+    } catch(err){
+        console.log(err)
+        if (err.response?.status !== 401){
+            setErrors(err.response?.data)
+        }
     }
   }
 
@@ -44,6 +61,9 @@ function JokeCreateForm() {
             value={title}
         />
       </FormGroup>
+      {errors?.title?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>{message}</Alert>
+      ))}
       <FormGroup controlId="content">
         <FormLabel>joke</FormLabel>
         <FormControl
@@ -55,21 +75,27 @@ function JokeCreateForm() {
             value={content}
         />
       </FormGroup>
+      {errors?.content?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>{message}</Alert>
+      ))}
 
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
-        onClick={() => {}}
+        onClick={() => history.goBack()}
       >
         cancel
       </Button>
       <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
         create
       </Button>
+      {errors?.no_field_error?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>{message}</Alert>
+      ))}
     </div>
   );
 
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <Row>
         <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
           <Container
