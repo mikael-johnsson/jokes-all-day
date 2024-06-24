@@ -25,7 +25,6 @@ function JokeFeed({message, filter = ""}) {
             try{
                 const {data} = await axiosReq.get(`/jokes/?${filter}search=${query}`) //filtering is not working
                 setJokes(data)
-                console.log(data)
             } catch(err){
                 console.log(err)
             }
