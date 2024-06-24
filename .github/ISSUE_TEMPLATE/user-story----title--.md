@@ -7,11 +7,11 @@ assignees: ''
 
 ---
 
-**As a user**, I can **do something**, so that **I can get something**
+As a **user**, I can **do something**, so that **I can get something**
 
 Acceptance Criteria:
--[] AC
--[] AC
--[] AC
--[] AC
--[] AC
+- [] AC
+- [] AC
+- [] AC
+- [] AC
+- [] AC
