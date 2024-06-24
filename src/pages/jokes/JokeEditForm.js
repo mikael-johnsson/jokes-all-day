@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
@@ -9,9 +9,10 @@ import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import { Alert, FormControl, FormGroup, FormLabel } from "react-bootstrap";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { axiosReq } from "../../api/axiosDefaults";
+import { axiosReq, axiosRes } from "../../api/axiosDefaults";
+import { useParams } from "react-router-dom/cjs/react-router-dom";
 
-function JokeCreateForm() {
+function JokeEditForm() {
     
   const [errors, setErrors] = useState({});
   const [jokeData, setJokeData] = useState({
@@ -20,6 +21,21 @@ function JokeCreateForm() {
   })
   const {title, content} = jokeData;
   const history = useHistory()
+  const {id} = useParams()
+
+  useEffect(() => {
+    const handleMount= async () => {
+        try{
+            const {data} = await axiosRes.get(`/jokes/${id}`)
+            const {title, content, is_owner} = data
+
+            is_owner ? setJokeData({title, content}) : history.push('/')
+        } catch(err){
+            console.log(err)
+        }
+    }
+    handleMount();
+  }, [id, history])
 
   const handleChange = (event) => {
     try{
@@ -38,8 +54,8 @@ function JokeCreateForm() {
     formData.append('title', title)
     formData.append('content', content)
     try{
-        const {data} = await axiosReq.post('/jokes/', formData)
-        history.push(`/jokes/${data.id}`)
+        await axiosReq.put(`/jokes/${id}`, formData)
+        history.push(`/jokes/${id}`)
     } catch(err){
         console.log(err)
         if (err.response?.status !== 401){
@@ -86,7 +102,7 @@ function JokeCreateForm() {
         cancel
       </Button>
       <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-        create
+        save
       </Button>
       {errors?.no_field_error?.map((message, idx) => (
         <Alert variant="warning" key={idx}>{message}</Alert>
@@ -112,4 +128,4 @@ function JokeCreateForm() {
   );
 }
 
-export default JokeCreateForm;
+export default JokeEditForm;
