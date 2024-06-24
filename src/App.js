@@ -10,6 +10,7 @@ import JokePage from "./pages/jokes/JokePage";
 import JokeFeed from "./pages/jokes/JokeFeed";
 import { useCurrentUser } from "./context/CurrentUserContext";
 import JokeEditForm from "./pages/jokes/JokeEditForm";
+import ProfilePage from "./pages/profiles/ProfilePage";
 
 function App() {
 
@@ -32,6 +33,7 @@ function App() {
               <Route exact path="/jokes/create" render={() => <JokeCreateForm /> } />
               <Route exact path="/jokes/:id/edit" render={() => <JokeEditForm /> } />
               <Route exact path="/jokes/:id" render={() => <JokePage /> } />
+              <Route exact path="/profiles/:id" render={() => <ProfilePage /> } />
               <Route render={() => <p>Page not found!</p>} />
             </Switch>
           </Container>
