@@ -18,11 +18,12 @@ function JokeFeed({message, filter = ""}) {
     // useLocation returns an object with info about the url. 
     // we need this to know if user us in Home or Feed
     const {pathname} = useLocation();
+    const [query, setQuery] = useState("")
 
     useEffect(() => {
         const fetchJokes = async () => {
             try{
-                const {data} = await axiosReq.get(`/jokes/?${filter}`) //filtering is not working
+                const {data} = await axiosReq.get(`/jokes/?${filter}search=${query}`) //filtering is not working
                 setJokes(data)
                 console.log(data)
             } catch(err){
@@ -30,11 +31,22 @@ function JokeFeed({message, filter = ""}) {
             }
         }
         fetchJokes()
-    }, [filter, pathname])
+    }, [filter, pathname, query])
   
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
+      <Form 
+        className={styles.SearchBar} 
+        onSubmit={(event) => event.preventDefault()}>
+            <Form.Control 
+                value={query}
+                onChange={(event) => setQuery(event.target.value)}
+                type="text"
+                className="mr-sm-2"
+                placeholder="search jokes" 
+            />
+      </Form>
         {jokes.results.length ? (
             jokes.results.map(joke => (
                 <Joke key={joke.id} {...joke}/>
