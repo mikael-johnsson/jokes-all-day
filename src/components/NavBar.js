@@ -73,7 +73,7 @@ const NavBar = () => {
         className={styles.NavLink}
         activeClassName={styles.Active}
       >
-        Sign up
+        sign up
       </NavLink>
     </>
   );

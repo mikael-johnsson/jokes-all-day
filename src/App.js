@@ -6,6 +6,7 @@ import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
 import LoginForm from "./pages/auth/LoginForm";
 import JokeCreateForm from "./pages/jokes/JokeCreateForm";
+import PostPage from "./pages/jokes/JokePage";
 
 function App() {
   
@@ -19,6 +20,7 @@ function App() {
               <Route exact path="/login" render={() => <LoginForm />} />
               <Route exact path="/signup" render={() => <SignUpForm />} />
               <Route exact path="/jokes/create" render={() => <JokeCreateForm /> } />
+              <Route exact path="/jokes/:id" render={() => <PostPage /> } />
               <Route render={() => <p>Page not found!</p>} />
             </Switch>
           </Container>
