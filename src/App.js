@@ -25,7 +25,7 @@ function App() {
               <Route exact path="/" render={() => <JokeFeed message="No results found"/>} />
               <Route exact path="/feed" render={() => <JokeFeed 
               message="No results found. Adjust search or follow a user"
-              filter={`owner__followed__owner__profile=${profile_id}&`} />} /> 
+              filter={`author__followed__owner__profile=${profile_id}&`} />} /> 
               <Route exact path="/login" render={() => <LoginForm />} />
               <Route exact path="/signup" render={() => <SignUpForm />} />
               <Route exact path="/jokes/create" render={() => <JokeCreateForm /> } />

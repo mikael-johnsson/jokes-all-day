@@ -7,10 +7,12 @@ import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 const Joke = (props) => {
     const {
         id,
+        profile_id,
         author,
         content,
         is_owner,
         title,
+        average_rating,
         rating_count,
         rating_id,
         created_at,
@@ -39,10 +41,10 @@ const Joke = (props) => {
                 {content && <Card.Text>{content}</Card.Text>}
                 <div>
                     {is_owner ? (
-                        <span>Your rating count: {rating_count}</span>
+                        <span>Your average rating: {average_rating} from {rating_count} ratings</span>
                     ) : rating_id ? (
-                        <span>You have rated this joke. This jokes rating count is: {rating_count}</span>
-                    ): <span> You have not rated this joke. This jokes rating count is: {rating_count}</span>}
+                        <span>You have rated this joke. This jokes average rating: {average_rating} from {rating_count} ratings</span>
+                    ): <span> You have not rated this joke. This jokes average rating: {average_rating} from {rating_count} ratings</span>}
                 </div>
 
             </Card.Body>
