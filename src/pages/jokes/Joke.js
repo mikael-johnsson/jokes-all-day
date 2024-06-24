@@ -3,6 +3,9 @@ import styles from '../../styles/Joke.module.css'
 import { useCurrentUser } from '../../context/CurrentUserContext';
 import { Card, Media } from 'react-bootstrap';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { MoreDropdown } from '../../components/MoreDropdown';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom';
+import { axiosRes } from '../../api/axiosDefaults';
 
 const Joke = (props) => {
     const {
@@ -23,6 +26,21 @@ const Joke = (props) => {
     // const is_owner = currentUser?.username === author
     // why is is_owner returning true?
 
+    const history = useHistory();
+
+    const handleEdit = () => {
+        history.push(`/jokes/${id}/edit`)
+    }
+
+    const handleDelete = async () => {
+        try{
+            await axiosRes.delete(`/jokes/${id}`)
+            history.goBack();
+        } catch(err){
+            console.log(err)
+        }
+    }
+
     //change Link to {`/profiles/${profile_id}`}
   return <Card className={styles.Joke}>
             <Card.Body>
@@ -32,12 +50,12 @@ const Joke = (props) => {
                     </Link> 
                     <div className='d-flex align-items-center'>
                         <span>{created_at}</span>
-                        {is_owner && jokePage && "..."}
+                        {is_owner && jokePage && <MoreDropdown handleDelete={handleDelete} handleEdit={handleEdit}/>}
                     </div>
                 </Media>
             </Card.Body>
             <Card.Body>
-                {title && <Card.Title className='text-center'>{title}</Card.Title>}
+                {title && <Link to={`jokes/${id}`}><Card.Title className='text-center'>{title}</Card.Title></Link>}
                 {content && <Card.Text>{content}</Card.Text>}
                 <div>
                     {is_owner ? (
