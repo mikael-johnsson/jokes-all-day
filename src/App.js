@@ -6,9 +6,15 @@ import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
 import LoginForm from "./pages/auth/LoginForm";
 import JokeCreateForm from "./pages/jokes/JokeCreateForm";
-import PostPage from "./pages/jokes/JokePage";
+import JokePage from "./pages/jokes/JokePage";
+import JokeFeed from "./pages/jokes/JokeFeed";
+import { useCurrentUser } from "./context/CurrentUserContext";
 
 function App() {
+
+  const currentUser = useCurrentUser();
+  const profile_id = currentUser?.profile_id || "";
+  // /feed route is for jokes from followed users. might need to adjust filter to my model field names
   
   return (
     
@@ -16,11 +22,14 @@ function App() {
           <NavBar />
           <Container className={styles.Main}>
             <Switch>
-              <Route exact path="/" render={() => <h1>Home page</h1>} />
+              <Route exact path="/" render={() => <JokeFeed message="No results found"/>} />
+              <Route exact path="/feed" render={() => <JokeFeed 
+              message="No results found. Adjust search or follow a user"
+              filter={`owner__followed__owner__profile=${profile_id}&`} />} /> 
               <Route exact path="/login" render={() => <LoginForm />} />
               <Route exact path="/signup" render={() => <SignUpForm />} />
               <Route exact path="/jokes/create" render={() => <JokeCreateForm /> } />
-              <Route exact path="/jokes/:id" render={() => <PostPage /> } />
+              <Route exact path="/jokes/:id" render={() => <JokePage /> } />
               <Route render={() => <p>Page not found!</p>} />
             </Switch>
           </Container>

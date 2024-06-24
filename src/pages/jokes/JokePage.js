@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom/cjs/react-router-dom";
 import { axiosReq } from "../../api/axiosDefaults";
 import Joke from "./Joke";
 
-function PostPage() {
+function JokePage() {
   const {id} = useParams();
   const [joke, setJoke] = useState({results: []})
 
@@ -38,4 +38,4 @@ function PostPage() {
   );
 }
 
-export default PostPage;
+export default JokePage;
