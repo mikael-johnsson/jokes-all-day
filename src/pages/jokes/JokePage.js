@@ -16,7 +16,6 @@ function JokePage() {
                 axiosReq.get(`/jokes/${id}`)
             ])
             setJoke({results: [joke]})
-            console.log(joke) 
         } catch(err){
             console.log(err)
         }

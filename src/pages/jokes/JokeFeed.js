@@ -12,6 +12,8 @@ import Joke from "./Joke";
 import NoResults from '../../assets/no-results.png'
 import { Image } from "react-bootstrap";
 import { useLocation } from "react-router-dom/cjs/react-router-dom";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from "../../utils/utils";
 
 function JokeFeed({message, filter = ""}) {
     const [jokes, setJokes] = useState({ results: [] })
@@ -47,9 +49,16 @@ function JokeFeed({message, filter = ""}) {
             />
       </Form>
         {jokes.results.length ? (
-            jokes.results.map(joke => (
-                <Joke key={joke.id} {...joke}/>
-            ))
+            <InfiniteScroll 
+            children={jokes.results.map(joke => (
+                    <Joke key={joke.id} {...joke}/>
+                ))
+            } 
+            dataLength={jokes.results.length}
+            loader={<h4>Loading...</h4>}
+            hasMore={!!jokes.next}
+            next={() => fetchMoreData(jokes, setJokes)}
+            />
         ) : (
             <Container className={appStyles.Content}>
                 <Image src={NoResults} />
