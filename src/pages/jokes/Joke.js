@@ -41,11 +41,10 @@ const Joke = (props) => {
         }
     }
 
-    //change Link to {`/profiles/${profile_id}`}
   return <Card className={styles.Joke}>
             <Card.Body>
                 <Media className='align-items-center justify-content-between'>
-                    <Link to={`/profiles`}>
+                    <Link to={`/profiles/${profile_id}`}>
                         <p>{author}</p>
                     </Link> 
                     <div className='d-flex align-items-center'>
