@@ -11,12 +11,13 @@ import JokeFeed from "./pages/jokes/JokeFeed";
 import { useCurrentUser } from "./context/CurrentUserContext";
 import JokeEditForm from "./pages/jokes/JokeEditForm";
 import ProfilePage from "./pages/profiles/ProfilePage";
+import UsernameForm from "./pages/profiles/UsernameForm";
+import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 
 function App() {
 
   const currentUser = useCurrentUser();
   const profile_id = currentUser?.profile_id || "";
-  // /feed route is for jokes from followed users. might need to adjust filter to my model field names
   
   return (
     
@@ -34,6 +35,8 @@ function App() {
               <Route exact path="/jokes/:id/edit" render={() => <JokeEditForm /> } />
               <Route exact path="/jokes/:id" render={() => <JokePage /> } />
               <Route exact path="/profiles/:id" render={() => <ProfilePage /> } />
+              <Route exact path="/profiles/:id/edit/username" render={() => <UsernameForm />}/>
+              <Route exact path="/profiles/:id/edit/password" render={() => <UserPasswordForm />}/>
               <Route render={() => <p>Page not found!</p>} />
             </Switch>
           </Container>
