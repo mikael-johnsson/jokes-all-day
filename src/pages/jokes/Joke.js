@@ -91,7 +91,7 @@ const Joke = (props) => {
                 {content && <Card.Text>{content}</Card.Text>}
                 <div>
                     {is_owner ? (
-                        <span>Your average rating: {average_rating} from {rating_count} ratings</span>
+                        <span>Your average rating: <strong>{average_rating}</strong> from {rating_count} ratings</span>
                     ) : rating_id ? (
                         <><span>You have rated this joke. Average rating: <strong>{average_rating}</strong> from {rating_count} ratings</span>
                         <Button onClick={handleRatingDelete}>Reset rating</Button></>

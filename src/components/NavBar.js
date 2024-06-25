@@ -7,9 +7,12 @@ import { useCurrentUser, useSetCurrentUser } from "../context/CurrentUserContext
 import { axiosReq } from "../api/axiosDefaults";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 
+
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
+  console.log(currentUser)
+ 
 
   // Deconstructed values the toggle need for function (toggle off when clicked outside of toggle button)
   const {expanded, setExpanded, ref} = useClickOutsideToggle();
@@ -77,6 +80,18 @@ const NavBar = () => {
       </NavLink>
     </>
   );
+
+  const adminIcons = (
+    <>
+      <NavLink
+          className={styles.NavLink}
+          activeClassName={styles.Active}
+          to="/admin"
+        >
+          admin
+        </NavLink>
+    </>
+  )
 
 
   return (
