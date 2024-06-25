@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from '../../styles/Joke.module.css'
 import { useCurrentUser } from '../../context/CurrentUserContext';
 import { Button, Card, Form, Media } from 'react-bootstrap';
@@ -22,27 +22,39 @@ const Joke = (props) => {
         setJokes,
     } = props;
 
-    console.log("set jokes log= ",setJokes)
-
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === author
 
     const history = useHistory();
 
-    const handleRating = async () => {
+    const handleRating = async (chosenRating) => {
         try {
-            const {data} = await axiosRes.post('/ratings/', {joke: id, rating: 5});
-            console.log("innan" + data)
+            const {data} = await axiosRes.post('/ratings/', {joke: id, rating: chosenRating});
             setJokes((prevJokes) => ({
                 ...prevJokes,
                 results: prevJokes.results.map((joke) => {
                     return joke.id === id ?
-                    {...joke, rating_count: joke.rating_count + 1, rating_id: data.id} :
+                    {...joke, rating_count: joke.rating_count + 1, rating_id: data.id} : //this row needs average rating to display the new average rating
                     joke;
                 })
             }))
-            console.log("efter" + data)
-            console.log("rating created")
+        } catch(err){
+            console.log(err)
+        }
+    }
+
+    const handleRatingDelete = async (event) => {
+        event.preventDefault()
+        try{
+            await axiosRes.delete(`/ratings/${rating_id}`)
+            setJokes((prevJokes) => ({
+                ...prevJokes,
+                results: prevJokes.results.map((joke) => {
+                    return joke.id === id ?
+                    {...joke, rating_count: joke.rating_count - 1, rating_id: null} :
+                    joke;
+                })
+            }))
         } catch(err){
             console.log(err)
         }
@@ -81,11 +93,36 @@ const Joke = (props) => {
                     {is_owner ? (
                         <span>Your average rating: {average_rating} from {rating_count} ratings</span>
                     ) : rating_id ? (
-                        <span>You have rated this joke. This jokes average rating: {average_rating} from {rating_count} ratings</span>
-                    ): (<Button onClick={handleRating}>Submit</Button>)}
+                        <><span>You have rated this joke. Average rating: <strong>{average_rating}</strong> from {rating_count} ratings</span>
+                        <Button onClick={handleRatingDelete}>Reset rating</Button></>
+                    ) : rating_count !== 0 ? (
+                        <>
+                            <span>Average rating: <strong>{average_rating}</strong> from {rating_count} ratings</span>
+                            <Form.Control as="select" size="md"  onChange={(e) => handleRating(e.target.value)}>
+                                <option value={1}>1</option>
+                                <option value={2}>2</option>
+                                <option value={3}>3</option>
+                                <option value={4}>4</option>
+                                <option value={5}>5</option>
+                            </Form.Control>
+                        </>
+                    ) : (
+                        <>
+                            <span>This joke has no ratings</span>
+                            <Form.Control as="select" size="md"  onChange={(e) => handleRating(e.target.value)}>
+                                <option value={1}>1</option>
+                                <option value={2}>2</option>
+                                <option value={3}>3</option>
+                                <option value={4}>4</option>
+                                <option value={5}>5</option>
+                            </Form.Control>
+                        </>
+                    )}
                 </div>
             </Card.Body>
         </Card>
 }
 
 export default Joke
+
+

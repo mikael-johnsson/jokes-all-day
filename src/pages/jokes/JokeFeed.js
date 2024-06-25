@@ -25,7 +25,7 @@ function JokeFeed({message, filter = ""}) {
     useEffect(() => {
         const fetchJokes = async () => {
             try{
-                const {data} = await axiosReq.get(`/jokes/?${filter}search=${query}`) //filtering is not working
+                const {data} = await axiosReq.get(`/jokes/?${filter}search=${query}`)
                 setJokes(data)
             } catch(err){
                 console.log(err)

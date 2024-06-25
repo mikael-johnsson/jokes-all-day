@@ -21,7 +21,6 @@ function JokePage() {
         }
     } 
     handleMount();
-    console.log("this is Joke = ", joke)
   }, [id])
 
 
