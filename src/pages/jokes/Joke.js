@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from '../../styles/Joke.module.css'
 import { useCurrentUser } from '../../context/CurrentUserContext';
-import { Card, Media } from 'react-bootstrap';
+import { Button, Card, Form, Media } from 'react-bootstrap';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import { MoreDropdown } from '../../components/MoreDropdown';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';
@@ -13,26 +13,47 @@ const Joke = (props) => {
         profile_id,
         author,
         content,
-        is_owner,
         title,
         average_rating,
         rating_count,
         rating_id,
         created_at,
-        jokePage
+        jokePage,
+        setJokes,
     } = props;
 
-    // const currentUser = useCurrentUser();
-    // const is_owner = currentUser?.username === author
-    // why is is_owner returning true?
+    console.log("set jokes log= ",setJokes)
+
+    const currentUser = useCurrentUser();
+    const is_owner = currentUser?.username === author
 
     const history = useHistory();
+
+    const handleRating = async () => {
+        try {
+            const {data} = await axiosRes.post('/ratings/', {joke: id, rating: 5});
+            console.log("innan" + data)
+            setJokes((prevJokes) => ({
+                ...prevJokes,
+                results: prevJokes.results.map((joke) => {
+                    return joke.id === id ?
+                    {...joke, rating_count: joke.rating_count + 1, rating_id: data.id} :
+                    joke;
+                })
+            }))
+            console.log("efter" + data)
+            console.log("rating created")
+        } catch(err){
+            console.log(err)
+        }
+    }
 
     const handleEdit = () => {
         history.push(`/jokes/${id}/edit`)
     }
 
-    const handleDelete = async () => {
+    const handleDelete = async (event) => {
+        event.preventDefault()
         try{
             await axiosRes.delete(`/jokes/${id}`)
             history.goBack();
@@ -61,9 +82,8 @@ const Joke = (props) => {
                         <span>Your average rating: {average_rating} from {rating_count} ratings</span>
                     ) : rating_id ? (
                         <span>You have rated this joke. This jokes average rating: {average_rating} from {rating_count} ratings</span>
-                    ): <span> You have not rated this joke. This jokes average rating: {average_rating} from {rating_count} ratings</span>}
+                    ): (<Button onClick={handleRating}>Submit</Button>)}
                 </div>
-
             </Card.Body>
         </Card>
 }

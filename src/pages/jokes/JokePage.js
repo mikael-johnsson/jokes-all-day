@@ -21,13 +21,14 @@ function JokePage() {
         }
     } 
     handleMount();
+    console.log("this is Joke = ", joke)
   }, [id])
 
 
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <Joke {...joke.results[0]} jokePage/>
+        <Joke {...joke.results[0]} setJokes={setJoke} jokePage />
       </Col>
     </Row>
   );

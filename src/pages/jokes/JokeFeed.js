@@ -51,7 +51,7 @@ function JokeFeed({message, filter = ""}) {
         {jokes.results.length ? (
             <InfiniteScroll 
             children={jokes.results.map(joke => (
-                    <Joke key={joke.id} {...joke}/>
+                    <Joke key={joke.id} {...joke} setJokes={setJokes}/>
                 ))
             } 
             dataLength={jokes.results.length}
