@@ -11,9 +11,7 @@ import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
-  console.log(currentUser)
  
-
   // Deconstructed values the toggle need for function (toggle off when clicked outside of toggle button)
   const {expanded, setExpanded, ref} = useClickOutsideToggle();
 
