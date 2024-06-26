@@ -7,9 +7,10 @@ const ReportEditForm = () => {
     const [reportData, setReportData] = useState({
         content: "",
         reason: "",
+        joke: "",
         joke_title: "",
     });
-    const {content, reason, joke_title} = reportData;
+    const {content, reason, joke, joke_title} = reportData;
 
     const [reportJoke, setReportJoke] = useState({
         author:""
@@ -53,9 +54,10 @@ const ReportEditForm = () => {
         const formData = new FormData();
         formData.append('reason', reason)
         formData.append('content', content)
+        formData.append('joke', joke)
         console.log(formData)
         try{
-            await axiosReq.put('/report/', formData)
+            await axiosReq.put(`/report/${id}`, formData)
             history.goBack();
         } catch(err){
             console.log(err)
