@@ -100,17 +100,21 @@ const Joke = (props) => {
                     {is_owner ? (
                         <span>Your average rating: <strong>{average_rating}</strong> from {rating_count} ratings</span>
                     ) : rating_id ? (
-                        <><span>You have rated this joke. Average rating: <strong>{average_rating}</strong> from {rating_count} ratings</span>
-                        <Button onClick={handleRatingDelete}>Reset rating</Button></>
+                        <>
+                            <span>You have rated this joke. Average rating: <strong>{average_rating}</strong> from {rating_count} ratings</span>
+                            <Button onClick={handleRatingDelete}>Reset rating</Button>
+                        </>
                     ) : rating_count !== 0 ? (
                         <>
                             <span>Average rating: <strong>{average_rating}</strong> from {rating_count} ratings</span>
-                            <Rating onClick={handleRating}/>
+                            <Rating 
+                            onClick={handleRating}
+                            allowHalfIcon={true}/>
                         </>
                     ) : (
                         <>
-                        <span>Average rating: <strong>{average_rating}</strong> from {rating_count} ratings</span>
-                        <Rating onClick={handleRating}/>
+                            <span>Average rating: <strong>{average_rating}</strong> from {rating_count} ratings</span>
+                            <Rating onClick={handleRating} allowHalfIcon={true}/>
                         </>
                     )}
                 </div>
