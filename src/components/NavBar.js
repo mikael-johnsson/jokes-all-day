@@ -36,6 +36,18 @@ const NavBar = () => {
     </NavLink>
   )
 
+  const adminIcons = (
+    <>
+      <NavLink
+          className={styles.NavLink}
+          activeClassName={styles.Active}
+          to="/admin"
+        >
+          admin
+        </NavLink>
+    </>
+  )
+
   const loggedInIcons = (
   <>
     <NavLink
@@ -58,6 +70,7 @@ const NavBar = () => {
       >
         profile
       </NavLink>
+      {currentUser? adminIcons : <p>No admin</p>}
   </>)
 
   const loggedOutIcons = (
@@ -78,19 +91,6 @@ const NavBar = () => {
       </NavLink>
     </>
   );
-
-  const adminIcons = (
-    <>
-      <NavLink
-          className={styles.NavLink}
-          activeClassName={styles.Active}
-          to="/admin"
-        >
-          admin
-        </NavLink>
-    </>
-  )
-
 
   return (
     <Navbar expanded={expanded} className={styles.NavBar} expand="md" fixed="top">

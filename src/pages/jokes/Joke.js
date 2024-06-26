@@ -131,6 +131,9 @@ const Joke = (props) => {
                         </>
                     )}
                 </div>
+                <Link to={`/admin/reportform/${id}`}>
+                    <Button>report joke</Button>
+                </Link>
             </Card.Body>
         </Card>
 }

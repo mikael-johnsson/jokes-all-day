@@ -24,7 +24,7 @@ function JokeEditForm() {
   const {id} = useParams()
 
   useEffect(() => {
-    const handleMount= async () => {
+    const handleMount = async () => {
         try{
             const {data} = await axiosRes.get(`/jokes/${id}`)
             const {title, content, is_owner} = data
