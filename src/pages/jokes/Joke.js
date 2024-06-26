@@ -26,15 +26,11 @@ const Joke = (props) => {
 
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === author
-
     const history = useHistory();
 
     const handleRating = async (rate) => {
         const dividedRating = (rate / 20)
-        console.log("då går vi in i try")
-        console.log(dividedRating)
         try {
-            console.log("nu är vi inne i try")
             const {data} = await axiosRes.post('/ratings/', {joke: id, rating: dividedRating});
             setJokes((prevJokes) => ({
                 ...prevJokes,
@@ -44,7 +40,6 @@ const Joke = (props) => {
                     joke;
                 })
             }))
-            console.log("nu är vi klara med try")
         } catch(err){
             console.log(err)
         }
@@ -100,6 +95,7 @@ const Joke = (props) => {
                     {is_owner ? (
                         <>
                             <Rating 
+                                    allowHalfIcon={true}
                                     initialValue={average_rating}
                                     readonly={true}
                             />
@@ -107,6 +103,7 @@ const Joke = (props) => {
                     ) : rating_id ? (
                         <>
                             <Rating 
+                                    allowHalfIcon={true}
                                     initialValue={average_rating}
                                     readonly={true}
                             />
@@ -115,6 +112,7 @@ const Joke = (props) => {
                     ) : rating_count !== 0 ? (
                         <>
                             <Rating 
+                                allowHalfIcon={true}
                                 onClick={handleRating}
                                 initialValue={average_rating}
                             />
@@ -122,6 +120,7 @@ const Joke = (props) => {
                     ) : (
                         <>
                             <Rating 
+                                allowHalfIcon={true}
                                 onClick={handleRating} 
                                 initialValue={average_rating}
                             />
