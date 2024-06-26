@@ -16,6 +16,7 @@ import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 import ReportPage from "./pages/admin/ReportPage";
 import ReportCreateForm from "./pages/admin/ReportCreateForm";
 import ReportEditForm from "./pages/admin/ReportEditForm";
+import Report from "./pages/admin/Report";
 
 function App() {
 
@@ -40,6 +41,7 @@ function App() {
               <Route exact path="/profiles/:id" render={() => <ProfilePage /> } />
               <Route exact path="/profiles/:id/edit/username" render={() => <UsernameForm />}/>
               <Route exact path="/profiles/:id/edit/password" render={() => <UserPasswordForm />}/>
+              <Route exact path="/report/:id" render={() => <Report />}/>
               <Route exact path="/admin" render={() => <ReportPage />}/>
               <Route exact path="/admin/report/create/:id" render={() => <ReportCreateForm />}/>
               <Route exact path="/admin/report/edit/:id" render={() => <ReportEditForm />}/>
