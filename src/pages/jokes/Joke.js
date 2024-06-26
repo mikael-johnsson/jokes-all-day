@@ -28,7 +28,7 @@ const Joke = (props) => {
     const is_owner = currentUser?.username === author
     const history = useHistory();
 
-    const handleRating = async (rate) => {
+    const createRating = async (rate) => {
         const dividedRating = (rate / 20)
         try {
             const {data} = await axiosRes.post('/ratings/', {joke: id, rating: dividedRating});
@@ -36,7 +36,7 @@ const Joke = (props) => {
                 ...prevJokes,
                 results: prevJokes.results.map((joke) => {
                     return joke.id === id ?
-                    {...joke, rating_count: joke.rating_count + 1, rating_id: data.id} : //this row needs average rating to display the new average rating
+                    {...joke, rating_count: joke.rating_count + 1, rating_id: data.id} : //this row needs average rating to display the new average rating to stars
                     joke;
                 })
             }))
@@ -94,6 +94,7 @@ const Joke = (props) => {
                 <div>
                     {is_owner ? (
                         <>
+                            <span>Average rating: {average_rating} from {rating_count} ratings</span>
                             <Rating 
                                     allowHalfIcon={true}
                                     initialValue={average_rating}
@@ -102,6 +103,7 @@ const Joke = (props) => {
                         </>
                     ) : rating_id ? (
                         <>
+                            <span>Average rating: {average_rating} from {rating_count} ratings</span>
                             <Rating 
                                     allowHalfIcon={true}
                                     initialValue={average_rating}
@@ -111,17 +113,19 @@ const Joke = (props) => {
                         </>
                     ) : rating_count !== 0 ? (
                         <>
+                            <span>Average rating: {average_rating} from {rating_count} ratings</span>
                             <Rating 
                                 allowHalfIcon={true}
-                                onClick={handleRating}
+                                onClick={createRating}
                                 initialValue={average_rating}
                             />
                         </>
                     ) : (
-                        <>
+                        <> 
+                            <span>Average rating: {average_rating} from {rating_count} ratings</span>
                             <Rating 
                                 allowHalfIcon={true}
-                                onClick={handleRating} 
+                                onClick={createRating} 
                                 initialValue={average_rating}
                             />
                         </>
