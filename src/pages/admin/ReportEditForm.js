@@ -3,25 +3,39 @@ import { Alert, Button, Container, Form } from 'react-bootstrap';
 import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom';
 import { axiosReq, axiosRes } from '../../api/axiosDefaults';
 
-const ReportCreateForm = () => {
+const ReportEditForm = () => {
     const [reportData, setReportData] = useState({
         content: "",
         reason: "",
-        joke:""
+        joke_title: "",
     });
-    const {content, reason} = reportData;
+    const {content, reason, joke_title} = reportData;
 
-    const [joke, setJoke] = useState({
-        title: "",
+    const [reportJoke, setReportJoke] = useState({
         author:""
     })
-    const {title, author} = joke;
+    const {author} = reportJoke;
 
     const [errors, setErrors] = useState({})
 
-    //get id of joke from URL
+    //get id of report from URL
     const {id} = useParams();
     const history = useHistory();
+
+    useEffect(() => {
+        const handleMount = async () => {
+            try{
+                const {data: report} = await axiosRes.get(`/report/${id}`)
+                const {joke} = report;
+                const {data: fetchedJoke} = await axiosRes.get(`/jokes/${joke}`)
+                setReportData(report)
+                setReportJoke(fetchedJoke)
+            } catch(err){
+                console.log(err)
+            }
+        } 
+        handleMount()
+    }, [id])
 
     const handleChange = (event) => {
         try{
@@ -39,10 +53,9 @@ const ReportCreateForm = () => {
         const formData = new FormData();
         formData.append('reason', reason)
         formData.append('content', content)
-        formData.append('joke', id)
         console.log(formData)
         try{
-            await axiosReq.post('/report/', formData)
+            await axiosReq.put('/report/', formData)
             history.goBack();
         } catch(err){
             console.log(err)
@@ -52,18 +65,7 @@ const ReportCreateForm = () => {
         }
       }
 
-    useEffect(() => {
-        const handleMount = async () => {
-            try{
-                const {data} = await axiosRes.get(`/jokes/${id}`)
-                setJoke(data)
-            } catch(err){
-                console.log(err)
-            }
-        } 
-        handleMount()
-    }, [id])
-    
+
     
   return (
     <Form onSubmit={handleSubmit}>
@@ -104,10 +106,10 @@ const ReportCreateForm = () => {
             {errors?.no_field_error?.map((message, idx) => (
                 <Alert variant="warning" key={idx}>{message}</Alert>
             ))}
-            <span>This report is regarding the joke: <strong>{title}</strong> by <strong>{author}</strong></span>
+            <span>This report is regarding the joke: <strong>{joke_title}</strong> by <strong>{author}</strong></span>
         </Container>
     </Form>
   )
 }
 
-export default ReportCreateForm
+export default ReportEditForm
