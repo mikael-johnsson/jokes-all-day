@@ -98,23 +98,33 @@ const Joke = (props) => {
                 {content && <Card.Text>{content}</Card.Text>}
                 <div>
                     {is_owner ? (
-                        <span>Your average rating: <strong>{average_rating}</strong> from {rating_count} ratings</span>
+                        <>
+                            <Rating 
+                                    initialValue={average_rating}
+                                    readonly={true}
+                            />
+                        </>
                     ) : rating_id ? (
                         <>
-                            <span>You have rated this joke. Average rating: <strong>{average_rating}</strong> from {rating_count} ratings</span>
+                            <Rating 
+                                    initialValue={average_rating}
+                                    readonly={true}
+                            />
                             <Button onClick={handleRatingDelete}>Reset rating</Button>
                         </>
                     ) : rating_count !== 0 ? (
                         <>
-                            <span>Average rating: <strong>{average_rating}</strong> from {rating_count} ratings</span>
                             <Rating 
-                            onClick={handleRating}
-                            allowHalfIcon={true}/>
+                                onClick={handleRating}
+                                initialValue={average_rating}
+                            />
                         </>
                     ) : (
                         <>
-                            <span>Average rating: <strong>{average_rating}</strong> from {rating_count} ratings</span>
-                            <Rating onClick={handleRating} allowHalfIcon={true}/>
+                            <Rating 
+                                onClick={handleRating} 
+                                initialValue={average_rating}
+                            />
                         </>
                     )}
                 </div>
