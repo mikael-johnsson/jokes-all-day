@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import { MoreDropdown } from '../../components/MoreDropdown';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 import { axiosRes } from '../../api/axiosDefaults';
+import { Rating } from 'react-simple-star-rating';
+
 
 const Joke = (props) => {
     const {
@@ -27,9 +29,13 @@ const Joke = (props) => {
 
     const history = useHistory();
 
-    const handleRating = async (chosenRating) => {
+    const handleRating = async (rate) => {
+        const dividedRating = (rate / 20)
+        console.log("då går vi in i try")
+        console.log(dividedRating)
         try {
-            const {data} = await axiosRes.post('/ratings/', {joke: id, rating: chosenRating});
+            console.log("nu är vi inne i try")
+            const {data} = await axiosRes.post('/ratings/', {joke: id, rating: dividedRating});
             setJokes((prevJokes) => ({
                 ...prevJokes,
                 results: prevJokes.results.map((joke) => {
@@ -38,6 +44,7 @@ const Joke = (props) => {
                     joke;
                 })
             }))
+            console.log("nu är vi klara med try")
         } catch(err){
             console.log(err)
         }
@@ -98,24 +105,12 @@ const Joke = (props) => {
                     ) : rating_count !== 0 ? (
                         <>
                             <span>Average rating: <strong>{average_rating}</strong> from {rating_count} ratings</span>
-                            <Form.Control as="select" size="md"  onChange={(e) => handleRating(e.target.value)}>
-                                <option value={1}>1</option>
-                                <option value={2}>2</option>
-                                <option value={3}>3</option>
-                                <option value={4}>4</option>
-                                <option value={5}>5</option>
-                            </Form.Control>
+                            <Rating onClick={handleRating}/>
                         </>
                     ) : (
                         <>
-                            <span>This joke has no ratings</span>
-                            <Form.Control as="select" size="md"  onChange={(e) => handleRating(e.target.value)}>
-                                <option value={1}>1</option>
-                                <option value={2}>2</option>
-                                <option value={3}>3</option>
-                                <option value={4}>4</option>
-                                <option value={5}>5</option>
-                            </Form.Control>
+                        <span>Average rating: <strong>{average_rating}</strong> from {rating_count} ratings</span>
+                        <Rating onClick={handleRating}/>
                         </>
                     )}
                 </div>
