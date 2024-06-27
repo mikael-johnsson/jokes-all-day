@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from '../../styles/Joke.module.css'
 import { useCurrentUser } from '../../context/CurrentUserContext';
-import { Button, Card, Form, Media } from 'react-bootstrap';
+import { Button, Card, Form, Media, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import { MoreDropdown } from '../../components/MoreDropdown';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';
@@ -141,7 +141,12 @@ const Joke = (props) => {
                     )}
                 </div>
                 <Link to={`/report/create/${id}`}>
-                    <Button>report joke</Button>
+                    <OverlayTrigger
+                        placement='top'
+                        overlay={<Tooltip>report this joke</Tooltip>}
+                    >
+                        <i class="fa-regular fa-face-angry" />
+                    </OverlayTrigger>
                 </Link>
             </Card.Body>
         </Card>

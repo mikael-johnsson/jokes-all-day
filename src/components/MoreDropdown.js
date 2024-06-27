@@ -14,8 +14,7 @@ const ThreeDots = React.forwardRef(({ onClick }, ref) => (
         e.preventDefault();
         onClick(e);
       }}
-    >
-    </i>
+    />
   ));
 
 export const MoreDropdown = ({handleEdit, handleDelete}) => {
