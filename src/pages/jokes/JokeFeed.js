@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
-
 import appStyles from "../../App.module.css";
 import styles from "../../styles/JokeFeed.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
@@ -14,6 +12,8 @@ import { Image } from "react-bootstrap";
 import { useLocation } from "react-router-dom/cjs/react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
+import { useCurrentUser } from "../../context/CurrentUserContext";
+
 
 function JokeFeed({message, filter = ""}) {
     const [jokes, setJokes] = useState({ results: [] })
@@ -21,6 +21,7 @@ function JokeFeed({message, filter = ""}) {
     // we need this to know if user us in Home or Feed
     const {pathname} = useLocation();
     const [query, setQuery] = useState("")
+    const currentUser = useCurrentUser();
 
     useEffect(() => {
         const fetchJokes = async () => {
@@ -32,7 +33,7 @@ function JokeFeed({message, filter = ""}) {
             }
         }
         fetchJokes()
-    }, [filter, pathname, query])
+    }, [filter, pathname, query, currentUser])
   
   return (
     <Row className="h-100">
