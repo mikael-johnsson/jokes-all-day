@@ -17,6 +17,7 @@ import ReportPage from "./pages/admin/ReportPage";
 import ReportCreateForm from "./pages/admin/ReportCreateForm";
 import ReportEditForm from "./pages/admin/ReportEditForm";
 import Report from "./pages/admin/Report";
+import NotFound from "./components/NotFound";
 
 function App() {
 
@@ -45,8 +46,8 @@ function App() {
               <Route exact path="/report" render={() => <ReportPage />}/>
               <Route exact path="/report/create/:id" render={() => <ReportCreateForm />}/>
               <Route exact path="/report/edit/:id" render={() => <ReportEditForm />}/>
-              <Route exact path="/pagenotfound" render={() => <><h2>page not found</h2><p>sorry, something went wrong!</p></>} />
-              <Route render={() => <><h2>page not found</h2><p>sorry, something went wrong!</p></>} />
+              <Route exact path="/pagenotfound" render={() => <NotFound />} />
+              <Route render={() => <NotFound />} />
             </Switch>
           </Container>
         </div>
