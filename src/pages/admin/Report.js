@@ -58,7 +58,7 @@ const Report = (props) => {
                 <p>Report written by: {author}</p>
                 <div className='d-flex align-items-center'>
                     <span>{created_at}</span>
-                    {is_owner  && <MoreDropdown handleDelete={handleDelete} handleEdit={handleEdit}/>}
+                    <MoreDropdown handleDelete={handleDelete} handleEdit={handleEdit}/>
                 </div>
             </Media>
         </Card.Body>
