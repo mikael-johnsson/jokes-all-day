@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Card, Form, Media } from 'react-bootstrap'
 import { axiosRes } from '../../api/axiosDefaults';
-import { Link } from 'react-router-dom/cjs/react-router-dom';
+import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom';
 import btnStyles from '../../styles/Button.module.css'
 
 const Report = (props) => {
@@ -18,6 +18,7 @@ const Report = (props) => {
         } = props;
     
     const [reportJoke, setReportJoke] = useState({})
+    const history = useHistory();
 
     useEffect(() => {
         const fetchJoke = async () => {
@@ -35,6 +36,7 @@ const Report = (props) => {
         event.preventDefault()
         try{
             await axiosRes.delete(`/report/${id}`)
+            history.goBack();
         } catch(err){
             console.log(err)
         }

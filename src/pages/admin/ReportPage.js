@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { axiosReq } from '../../api/axiosDefaults'
 import { Col, Row } from 'react-bootstrap'
 import Report from './Report'
-import { useLocation } from "react-router-dom/cjs/react-router-dom";
 
 const ReportPage = () => {
   const [report, setReports] = useState({results: []})
