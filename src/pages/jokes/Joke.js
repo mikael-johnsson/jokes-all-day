@@ -98,7 +98,7 @@ const Joke = (props) => {
                 </Media>
             </Card.Body>
             <Card.Body>
-                {title && <Link to={`jokes/${id}`}><Card.Title className='text-center'>{title}</Card.Title></Link>}
+                {title && <Link to={`/jokes/${id}`}><Card.Title className='text-center'>{title}</Card.Title></Link>}
                 {content && <Card.Text>{content}</Card.Text>}
                 <div>
                     {is_owner ? (
