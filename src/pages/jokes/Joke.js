@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from '../../styles/Joke.module.css'
 import { useCurrentUser } from '../../context/CurrentUserContext';
-import { Button, Card, Form, Media, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Card, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import { MoreDropdown } from '../../components/MoreDropdown';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';
@@ -87,18 +87,19 @@ const Joke = (props) => {
 
   return <Card className={styles.Joke}>
             <Card.Body>
-                <Media className='align-items-center justify-content-between'>
+                <div className='d-flex align-items-center justify-content-between'>
                     <Link to={`/profiles/${profile_id}`}>
-                        <p>{author}</p>
+                        <h5>by: {author}</h5>
                     </Link> 
-                    <div className='d-flex align-items-center'>
+                    <div className='d-flex align-items-center' style={{gap:12}}>
                         <span>{created_at}</span>
                         {is_owner && jokePage && <MoreDropdown handleDelete={handleDelete} handleEdit={handleEdit}/>}
                     </div>
-                </Media>
-            </Card.Body>
-            <Card.Body>
-                {title && <Link to={`/jokes/${id}`}><Card.Title className='text-center'>{title}</Card.Title></Link>}
+                </div>
+                {title && 
+                    <Link to={`/jokes/${id}`}>
+                        <Card.Title className='text-center'>{title}</Card.Title>
+                    </Link>}
                 {content && <Card.Text>{content}</Card.Text>}
                 <div>
                     {is_owner ? (
@@ -116,15 +117,6 @@ const Joke = (props) => {
                                     initialValue={average_rating}
                                     onClick={editRating}
                             />
-                            <OverlayTrigger
-                                placement='top'
-                                overlay={<Tooltip>clear your rating</Tooltip>}>
-                                    <i 
-                                onClick={deleteRating}
-                                className="fa-solid fa-eraser" />
-                            </OverlayTrigger>
-                            
-                            
                         </>
                     ) : rating_count !== 0 ? (
                         <>
@@ -152,6 +144,15 @@ const Joke = (props) => {
                         <i className="fa-regular fa-face-angry" />
                     </OverlayTrigger>
                 </Link>
+                {!is_owner && rating_id && (
+                    <OverlayTrigger
+                        placement='top'
+                        overlay={<Tooltip>clear your rating</Tooltip>}>
+                            <i 
+                        onClick={deleteRating}
+                        className="fa-solid fa-eraser" />
+                    </OverlayTrigger>
+                )}
             </Card.Body>
         </Card>
 }
