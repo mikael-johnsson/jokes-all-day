@@ -36,14 +36,14 @@ const NavBar = () => {
     </NavLink>
   )
 
-  const adminIcons = (
+  const reportIcons = (
     <>
       <NavLink
           className={styles.NavLink}
           activeClassName={styles.Active}
-          to="/admin"
+          to="/report"
         >
-          admin
+          reports
         </NavLink>
     </>
   )
@@ -70,7 +70,7 @@ const NavBar = () => {
       >
         profile
       </NavLink>
-      {currentUser? adminIcons : <p>No admin</p>}
+      {currentUser? reportIcons : <p>No admin</p>}
   </>)
 
   const loggedOutIcons = (

@@ -1,36 +1,35 @@
 import React, { useEffect, useState } from 'react'
-import { Card, FormControl, Media } from 'react-bootstrap'
+import { Button, Card, Form, Media } from 'react-bootstrap'
 import { axiosRes } from '../../api/axiosDefaults';
-import { useParams } from 'react-router-dom/cjs/react-router-dom';
+import { Link } from 'react-router-dom/cjs/react-router-dom';
 
-const Report = () => {
-    const [report, setReport] = useState({})
+const Report = (props) => {
     const {
-        id, 
+        id,
         author, 
         content,
         reason,
         created_at,
         joke, 
         joke_title,
-        handled
-        } = report;
+        handled,
+        setReport,
+        } = props;
     
     const [reportJoke, setReportJoke] = useState({})
-    
-    const {urlId} = useParams();
-    
+
     useEffect(() => {
-        const handleMount = async () => {
+        const fetchJoke = async () => {
             try{
-                const {data: report} = await axiosRes.get(`/report/${urlId}`)
-                setReport(report)
+                const {data} = await axiosRes.get(`/jokes/${joke}`)
+                setReportJoke(data)
             } catch(err){
                 console.log(err)
             }
-        } 
-        handleMount()
-    }, [urlId])
+        }
+        fetchJoke();
+    }, [])
+    
 
   return (
     <Card>
@@ -51,10 +50,25 @@ const Report = () => {
         <Card.Body>
             <Media>
                 <p>title of joke: {joke_title} </p>
-                <p>content of joke:</p>
-                <p>author of joke</p>
+                <p>content of joke: {reportJoke.content}</p>
+                <p>author of joke: {reportJoke.author}</p>
             </Media>
         </Card.Body>
+        <Form>
+            <Form.Check 
+                disabled
+                type="checkbox" 
+                label="handled" 
+                value={handled}
+            />
+        </Form>
+        <Link to={`/report/edit/${id}`}>
+            <Button>edit report</Button>
+        </Link>
+        <Link to={`/report/edit/${id}`}>
+            <Button>delete report</Button>
+        </Link>
+        
     </Card>
   )
 }

@@ -42,9 +42,9 @@ function App() {
               <Route exact path="/profiles/:id/edit/username" render={() => <UsernameForm />}/>
               <Route exact path="/profiles/:id/edit/password" render={() => <UserPasswordForm />}/>
               <Route exact path="/report/:id" render={() => <Report />}/>
-              <Route exact path="/admin" render={() => <ReportPage />}/>
-              <Route exact path="/admin/report/create/:id" render={() => <ReportCreateForm />}/>
-              <Route exact path="/admin/report/edit/:id" render={() => <ReportEditForm />}/>
+              <Route exact path="/report" render={() => <ReportPage />}/>
+              <Route exact path="/report/create/:id" render={() => <ReportCreateForm />}/>
+              <Route exact path="/report/edit/:id" render={() => <ReportEditForm />}/>
               <Route render={() => <p>Page not found!</p>} />
             </Switch>
           </Container>

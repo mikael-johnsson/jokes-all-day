@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from '../../styles/Joke.module.css'
 import { useCurrentUser } from '../../context/CurrentUserContext';
 import { Button, Card, Form, Media } from 'react-bootstrap';
@@ -131,7 +131,7 @@ const Joke = (props) => {
                         </>
                     )}
                 </div>
-                <Link to={`/admin/report/create/${id}`}>
+                <Link to={`/report/create/${id}`}>
                     <Button>report joke</Button>
                 </Link>
             </Card.Body>
