@@ -16,13 +16,11 @@ const ReportPage = () => {
         console.log(err)
       }
     }
-    console.log("about to run fetchReports")
     fetchReports();
   }, [])
 
   return (
     <Row>
-      {console.log(report.results)}
       <Col>
       {report?.results?.map(report => ( 
         <Report key={report.id} {...report} setReport={setReports}/>

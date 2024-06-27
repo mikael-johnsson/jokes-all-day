@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Card, Form, Media } from 'react-bootstrap'
 import { axiosRes } from '../../api/axiosDefaults';
-import { Link } from 'react-router-dom/cjs/react-router-dom';
+import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom';
 
 const Report = (props) => {
     const {
@@ -29,6 +29,15 @@ const Report = (props) => {
         }
         fetchJoke();
     }, [])
+
+    const handleDelete = async (event) => {
+        event.preventDefault()
+        try{
+            await axiosRes.delete(`/report/${id}`)
+        } catch(err){
+            console.log(err)
+        }
+    }
     
 
   return (
@@ -63,11 +72,11 @@ const Report = (props) => {
             />
         </Form>
         <Link to={`/report/edit/${id}`}>
-            <Button>edit report</Button>
+            <Button variant='primary'>edit report</Button>
         </Link>
-        <Link to={`/report/edit/${id}`}>
-            <Button>delete report</Button>
-        </Link>
+        
+        <Button variant='warning' onClick={handleDelete}>delete report</Button>
+        
         
     </Card>
   )
