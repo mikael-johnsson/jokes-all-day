@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { axiosReq } from '../../api/axiosDefaults'
 import { Col, Row } from 'react-bootstrap'
 import Report from './Report'
+import { useHistory } from 'react-router-dom/cjs/react-router-dom'
 
 const ReportPage = () => {
   const [report, setReports] = useState({results: []})
+  const history = useHistory();
 
   useEffect(() => {
     const fetchReports = async () => {
@@ -13,6 +15,9 @@ const ReportPage = () => {
         setReports(data)
       } catch(err){
         console.log(err)
+        if (err?.response.status === 404){
+          history.push('/pagenotfound')
+        }
       }
     }
     fetchReports();

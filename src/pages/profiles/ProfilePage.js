@@ -19,6 +19,7 @@ import { fetchMoreData } from "../../utils/utils";
 import Joke from "../jokes/Joke";
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
 import { Rating } from "react-simple-star-rating";
+import { useHistory } from "react-router-dom/cjs/react-router-dom";
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -29,7 +30,7 @@ function ProfilePage() {
   const [profile] = pageProfile.results
   const is_owner = currentUser?.username === profile?.owner
   const [profileJokes, setProfileJokes] = useState({results: []});
-  
+  const history = useHistory();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,7 +46,9 @@ function ProfilePage() {
             setProfileJokes(profileJokes)
             setHasLoaded(true);
         } catch(err){
-            console.log(err)
+            if (err?.response.status === 404){
+              history.push('/pagenotfound')
+            }
         }
     }
     fetchData()
