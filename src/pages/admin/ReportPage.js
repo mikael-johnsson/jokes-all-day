@@ -22,9 +22,11 @@ const ReportPage = () => {
   return (
     <Row>
       <Col>
-      {report?.results?.map(report => ( 
+      {report.results.length ? 
+      (report?.results?.map(report => ( 
         <Report key={report.id} {...report} setReport={setReports}/>
-      ))}
+      ))) : <h3>You haven't made any reports yet.</h3>
+      }
       </Col>
     </Row>
   )
