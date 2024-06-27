@@ -56,9 +56,8 @@ function ProfilePage() {
 
   const mainProfile = (
     <>
-      {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
-      <Row noGutters className="px-3 text-center">
-        <Col lg={6}>
+      <Row noGutters className="px-3 text-center justify-content-space-between">
+        <Col lg={11}>
           <h3 className="m-2">{profile?.owner}</h3>
           <Row className="justify-content-center no-gutters">
             <Col className="my-2">
@@ -73,6 +72,8 @@ function ProfilePage() {
                 <div>{profile?.following_count}</div>
                 <div>following</div>
             </Col>
+          </Row>
+          <Row>
             <Col className="my-2">
                 <Rating
                   allowHalfIcon={true}
@@ -83,8 +84,8 @@ function ProfilePage() {
             </Col>
           </Row>
         </Col>
-        <Col lg={3} className="text-lg-right">
-        {currentUser && !is_owner && (
+        <Col lg={1} className="text-lg-right">
+        {(currentUser && !is_owner) ? (
             profile?.following_id ? (
             <Button 
               onClick={() => handleUnfollow(profile)} 
@@ -99,7 +100,8 @@ function ProfilePage() {
               follow
             </Button>
             )
-        )}
+        ) : profile?.is_owner && <ProfileEditDropdown id={profile?.id} />
+        } 
         </Col>
       </Row>
     </>
@@ -108,7 +110,7 @@ function ProfilePage() {
   const mainProfilePosts = (
     <>
       <hr />
-      <p className="text-center">{profile?.owner}'s posts</p>
+      <h5 className="text-center">{profile?.owner}'s jokes</h5>
       <hr />
       {profileJokes?.results.length ? (
         <InfiniteScroll 

@@ -4,8 +4,7 @@
     padding: 0px;
   }
   
-  .Absolute {
-    position: absolute;
+  .Right {
     right: 0;
     z-index: 99;
   }
