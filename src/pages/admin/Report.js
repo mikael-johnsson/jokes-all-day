@@ -3,6 +3,8 @@ import { Button, Card, Form, Media } from 'react-bootstrap'
 import { axiosRes } from '../../api/axiosDefaults';
 import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom';
 import btnStyles from '../../styles/Button.module.css'
+import { MoreDropdown } from '../../components/MoreDropdown';
+import { useCurrentUser } from '../../context/CurrentUserContext';
 
 const Report = (props) => {
     const {
@@ -19,6 +21,8 @@ const Report = (props) => {
     
     const [reportJoke, setReportJoke] = useState({})
     const history = useHistory();
+    const currentUser = useCurrentUser();
+    const is_owner = currentUser?.username === author
 
     useEffect(() => {
         const fetchJoke = async () => {
@@ -41,14 +45,21 @@ const Report = (props) => {
             console.log(err)
         }
     }
+
+    const handleEdit = () => {
+        history.push(`/report/edit/${id}`)
+    }
     
 
   return (
     <Card>
         <Card.Body>
-            <Media>
+            <Media className='align-items-center justify-content-between'>
                 <p>Report written by: {author}</p>
-                <p>Created at: {created_at}</p>
+                <div className='d-flex align-items-center'>
+                    <span>{created_at}</span>
+                    {is_owner  && <MoreDropdown handleDelete={handleDelete} handleEdit={handleEdit}/>}
+                </div>
             </Media>
         </Card.Body>
         <Card.Body>
@@ -74,17 +85,6 @@ const Report = (props) => {
                 value={handled}
             />
         </Form>
-        <Link to={`/report/edit/${id}`}>
-            <Button className={`${btnStyles.Button}`}>edit report</Button>
-        </Link>
-        
-        <Button 
-            className={`${btnStyles.Button} ${btnStyles.Delete}`} 
-            onClick={handleDelete}>
-            delete report
-        </Button>
-        
-        
     </Card>
   )
 }

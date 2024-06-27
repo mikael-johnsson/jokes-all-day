@@ -103,7 +103,6 @@ const Joke = (props) => {
                 <div>
                     {is_owner ? (
                         <>
-                            <span>Average rating: {average_rating} from {rating_count} ratings</span>
                             <Rating 
                                     allowHalfIcon={true}
                                     initialValue={average_rating}
@@ -112,7 +111,6 @@ const Joke = (props) => {
                         </>
                     ) : rating_id ? (
                         <>
-                            <span>Average rating: {average_rating} from {rating_count} ratings</span>
                             <Rating 
                                     allowHalfIcon={true}
                                     initialValue={average_rating}
@@ -130,7 +128,6 @@ const Joke = (props) => {
                         </>
                     ) : rating_count !== 0 ? (
                         <>
-                            <span>Average rating: {average_rating} from {rating_count} ratings</span>
                             <Rating 
                                 allowHalfIcon={true}
                                 onClick={createRating}
@@ -139,7 +136,6 @@ const Joke = (props) => {
                         </>
                     ) : (
                         <> 
-                            <span>Average rating: {average_rating} from {rating_count} ratings</span>
                             <Rating 
                                 allowHalfIcon={true}
                                 onClick={createRating} 
