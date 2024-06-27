@@ -23,7 +23,10 @@ const ReportPage = () => {
       <Col>
       {report.results.length ? 
       (report?.results?.map(report => ( 
-        <Report key={report.id} {...report} setReport={setReports}/>
+        <>
+          <Report key={report.id} {...report} setReport={setReports}/>
+          <br/>
+        </>
       ))) : <h3>You haven't made any reports yet.</h3>
       }
       </Col>

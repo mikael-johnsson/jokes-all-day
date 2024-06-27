@@ -53,30 +53,22 @@ const Report = (props) => {
 
   return (
     <Card>
-        <Card.Body>
-            <Media className='align-items-center justify-content-between'>
-                <p>Report written by: {author}</p>
-                <div className='d-flex align-items-center'>
-                    <span>{created_at}</span>
+        <Card.Body className='align-items-center justify-content-between'>
+                <span className='d-flex align-items-center'>
                     <MoreDropdown handleDelete={handleDelete} handleEdit={handleEdit}/>
-                </div>
-            </Media>
+                </span>
+                <p>reported by: {author}</p>
+                <p>created: {created_at}</p>
+                <p>reason: {reason}</p>
+                <p>message: {content}</p> 
+                <div>
+                    <hr/>
+                    <p>title of joke: {joke_title} </p>
+                    <p>joke: {reportJoke.content}</p>
+                    <p>author: {reportJoke.author}</p>
+                    </div>
         </Card.Body>
         <Card.Body>
-            <Media>
-                <p>Reason of report: {reason}</p>
-                <p>report message:</p> 
-                <br/>
-                <p>{content}</p>
-            </Media>
-        </Card.Body>
-        <Card.Body>
-            <Media>
-                <p>title of joke: {joke_title} </p>
-                <p>content of joke: {reportJoke.content}</p>
-                <p>author of joke: {reportJoke.author}</p>
-            </Media>
-        </Card.Body>
         <Form>
             <Form.Check 
                 disabled
@@ -85,6 +77,7 @@ const Report = (props) => {
                 value={handled}
             />
         </Form>
+        </Card.Body>
     </Card>
   )
 }
