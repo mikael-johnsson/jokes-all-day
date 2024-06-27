@@ -118,7 +118,15 @@ const Joke = (props) => {
                                     initialValue={average_rating}
                                     onClick={editRating}
                             />
-                            <Button onClick={deleteRating}>Reset rating</Button>
+                            <OverlayTrigger
+                                placement='top'
+                                overlay={<Tooltip>clear your rating</Tooltip>}>
+                                    <i 
+                                onClick={deleteRating}
+                                className="fa-solid fa-eraser" />
+                            </OverlayTrigger>
+                            
+                            
                         </>
                     ) : rating_count !== 0 ? (
                         <>
@@ -145,7 +153,7 @@ const Joke = (props) => {
                         placement='top'
                         overlay={<Tooltip>report this joke</Tooltip>}
                     >
-                        <i class="fa-regular fa-face-angry" />
+                        <i className="fa-regular fa-face-angry" />
                     </OverlayTrigger>
                 </Link>
             </Card.Body>
