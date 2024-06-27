@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Card, Form, Media } from 'react-bootstrap'
 import { axiosRes } from '../../api/axiosDefaults';
-import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom';
+import { Link } from 'react-router-dom/cjs/react-router-dom';
+import btnStyles from '../../styles/Button.module.css'
 
 const Report = (props) => {
     const {
@@ -72,10 +73,14 @@ const Report = (props) => {
             />
         </Form>
         <Link to={`/report/edit/${id}`}>
-            <Button variant='primary'>edit report</Button>
+            <Button className={`${btnStyles.Button}`}>edit report</Button>
         </Link>
         
-        <Button variant='warning' onClick={handleDelete}>delete report</Button>
+        <Button 
+            className={`${btnStyles.Button} ${btnStyles.Delete}`} 
+            onClick={handleDelete}>
+            delete report
+        </Button>
         
         
     </Card>
