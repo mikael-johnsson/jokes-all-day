@@ -58,19 +58,19 @@ const NavBar = () => {
         feed
       </NavLink>
       <NavLink
+        to={`/profiles/${currentUser?.profile_id}`}
+        className={styles.NavLink}
+      >
+        profile
+      </NavLink>
+      {currentUser? reportIcons : <p>You need to be logged in to see reports</p>}
+      <NavLink
         to="/"
         className={styles.NavLink}
         onClick={handleLogout}
       >
         logout
       </NavLink>
-      <NavLink
-        to={`/profiles/${currentUser?.profile_id}`}
-        className={styles.NavLink}
-      >
-        profile
-      </NavLink>
-      {currentUser? reportIcons : <p>No admin</p>}
   </>)
 
   const loggedOutIcons = (
