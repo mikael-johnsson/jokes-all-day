@@ -45,7 +45,16 @@ const Joke = (props) => {
         }
     }
 
-    const handleRatingDelete = async (event) => {
+    const editRating = async (rate) => {
+        const dividedRating = (rate / 20)
+        try{
+            await axiosRes.put(`/ratings/${rating_id}`, {joke: id, rating: dividedRating});
+        } catch(err){
+            console.log(err)
+        }
+    }
+
+    const deleteRating = async (event) => {
         event.preventDefault()
         try{
             await axiosRes.delete(`/ratings/${rating_id}`)
@@ -107,9 +116,9 @@ const Joke = (props) => {
                             <Rating 
                                     allowHalfIcon={true}
                                     initialValue={average_rating}
-                                    readonly={true}
+                                    onClick={editRating}
                             />
-                            <Button onClick={handleRatingDelete}>Reset rating</Button>
+                            <Button onClick={deleteRating}>Reset rating</Button>
                         </>
                     ) : rating_count !== 0 ? (
                         <>
