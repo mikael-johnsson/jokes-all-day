@@ -18,6 +18,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import Joke from "../jokes/Joke";
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
+import { Rating } from "react-simple-star-rating";
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -68,6 +69,14 @@ function ProfilePage() {
             <Col className="my-2">
                 <div>{profile?.following_count}</div>
                 <div>following</div>
+            </Col>
+            <Col className="my-2">
+                <Rating
+                  allowHalfIcon={true}
+                  initialValue={profile?.received_rating}
+                  readonly={true} 
+                />
+                <div>received rating</div>
             </Col>
           </Row>
         </Col>
