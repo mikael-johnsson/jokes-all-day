@@ -82,7 +82,7 @@ function LoginForm() {
                     <Alert variant="warning" key={idx}>{message}</Alert>
                 )}
                 <Button className={`${btnStyles.Button}`} type="submit">
-                    sign in
+                    login
                 </Button>
                 {errors.non_field_errors?.map((message, idx) => 
                     <Alert variant="warning" key={idx}>{message}</Alert>

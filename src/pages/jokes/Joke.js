@@ -102,7 +102,13 @@ const Joke = (props) => {
                     </Link>}
                 {content && <Card.Text>{content}</Card.Text>}
                 <div>
-                    {is_owner ? (
+                    { !currentUser ? (
+                        <Rating 
+                        allowHalfIcon={true}
+                        initialValue={average_rating}
+                        readonly={true}
+                />
+                    ) :  is_owner ? (
                         <>
                             <Rating 
                                     allowHalfIcon={true}
