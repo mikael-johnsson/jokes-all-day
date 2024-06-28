@@ -115,27 +115,25 @@ The issues created for this site were labeled with the use of the MoSCoW method.
 
 
 ### Wireframes
-The site was developed mobile first. The desktop wireframes are therefor bigger versions of the mobile wireframes. In the wireframes checkboxes are to be seen. That feature was never implemented. More information can be found at [Future features](#future-features).
+The site was developed mobile first. The desktop wireframes are therefor bigger versions of the mobile wireframes. Some features were removed after the design process when a smaller scope was determined. More information can be found at [Future features](#future-features).
 
 **Mobile**
 
-![Wireframe for the start page on mobile]()
-![Wireframe for the sign up page on mobile]()
-![Wireframe for the login page on mobile]()
-![Wireframe for the list menu on mobile]()
-![Wireframe for the list on mobile]()
-![Wireframe for the share list feature on mobile]()
+![Wireframe for the content page on mobile](src/assets/documentation/readme/mobile_content_page.png)
+![Wireframe for the sign up page on mobile](src/assets/documentation/readme/mobile_account_page.png)
+![Wireframe for the toggled menu on mobile](src/assets/documentation/readme/mobile_toggled_menu.png)
+![Wireframe for the profile page on mobile](src/assets/documentation/readme/mobile_profile_page.png)
+![Wireframe for the report page on mobile](src/assets/documentation/readme/mobile_reports_page.png)
 
 **Desktop**
 
-![Wireframe for the start page on desktop]()
-![Wireframe for the sign up page on desktop]()
-![Wireframe for the login page on desktop]()
-![Wireframe for the list menu on desktop]()
-![Wireframe for the list on desktop]()
-![Wireframe for the share list feature on desktop]()
+![Wireframe for the content page on desktop](src/assets/documentation/readme/desktop_content_page.png)
+![Wireframe for the sign up page on desktop](src/assets/documentation/readme/desktop_account_page.png)
+![Wireframe for the profile page on desktop](src/assets/documentation/readme/desktop_profile_page.png)
+![Wireframe for the list menu on desktop](src/assets/documentation/readme/desktop_reports_page.png)
+
 ### ERDs
-This site uses three models: Django's *User* model, a *list* model and a *list item* model. 
+This site uses xx models:
 
 Below is the Entity Relationship Diagram:
 
