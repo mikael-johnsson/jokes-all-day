@@ -73,8 +73,6 @@ Users can post jokes that the rest of the community can take part of. A star rat
 ### Agile Methods
 This project was planned with agile methods. As some features depended on others to be built, the obvious way was to start with the most fundamental features and user stories first and work upwards.
 
-Being a very small project, no epics, milestones or story points have been used.
-
 Only one iteration has been completed and future features are planned to take place in the second iteration.
 
 ### MoSCoW Method
@@ -85,39 +83,57 @@ The issues created for this site were labeled with the use of the MoSCoW method.
 * Could have - features that could bring that little extra to the user
 * Won't have - features that no longer fit the project or won't be included in this release
 
-### User Stories
-|User Story|Priority|
-|-|-|
-|As a user I can create an account so that I can sign in to the application.|MUST HAVE|
-|As a user I can log in to my account so that I can see, edit and delete my lists|MUST HAVE|
-|As a user I can log out of my account so that me or someone else can log in to another account on the same device|MUST HAVE|
-|As a user I can create a shopping list so that I have a place to write what groceries to buy.|SHOULD HAVE|
-|As a user I can edit a list I created before so that I can reuse older lists or change a list I intended to use.|SHOULD HAVE|
-|As a user I can delete a list so that I don’t have to see it in my list menu|SHOULD HAVE|
-|As a user I can share a list so that other people can shop from a list I have created.|COULD HAVE|
-|As an admin I can delete users so that inactive users don’t take up space in the database|SHOULD HAVE|
+### Epics, User Stories, Issues
+#### Epic: Setup
+- Create a repository at Github and use it to create a workspace in Gitpod.
+- Install React in the workspace
+- Install React Bootstrap, React Infinite Scroll and other necessary packages
+
+#### Epic: User Accounts 
+- As a user, I can easily find the login and logout button, so that I can enter and leave the site when I please
+- As a non logged in user, I can easily find the account pages, so that I can create an account and log in
+
+#### Epic: Joke (with full CRUD)
+- As a user, I can create a joke, so that I can share my comedy with other users
+- As a user, I can see my own jokes, so that I can get a clear picture of what jokes I have posted
+- As a user, I can edit my own joke, so that I can update it to my satisfaction
+- As a user, I can delete my joke, so that I can choose what jokes to display to other users
+
+
+#### Epic: Interaction
+- As a user, I can see jokes by other users, so that I can take part in the joke community
+- As a user, I can search the feeds, so that I can find a specific joke or user
+- As a user, I can rate other users jokes, so that I can share how much I liked it
+- As a user, I can see my own given average rating, so that I can display my rating to other users
+- As a user, I can see a jokes average rating, so that I can see what users think of that joke
+- As a user, I can report a joke, so that I can let admin know that I find the joke offensive
+
+#### Epic: Site owner administration
+- As an admin, I can handle users accounts, so that I can maintain a high quality site
+- As an admin, I can handle reports, so that I can keep track of which reports have been dealt with
+- As an admin, I can delete a joke, so that I can maintain a high quality site
+
 
 ### Wireframes
 The site was developed mobile first. The desktop wireframes are therefor bigger versions of the mobile wireframes. In the wireframes checkboxes are to be seen. That feature was never implemented. More information can be found at [Future features](#future-features).
 
 **Mobile**
 
-![Wireframe for the start page on mobile](static/images/documentation/mobile_start_page.png)
-![Wireframe for the sign up page on mobile](static/images/documentation/mobile_sign_up.png)
-![Wireframe for the login page on mobile](static/images/documentation/mobile_login.png)
-![Wireframe for the list menu on mobile](static/images/documentation/mobile_list_menu.png)
-![Wireframe for the list on mobile](static/images/documentation/mobile_handle_list.png)
-![Wireframe for the share list feature on mobile](static/images/documentation/mobile_share_list.png)
+![Wireframe for the start page on mobile]()
+![Wireframe for the sign up page on mobile]()
+![Wireframe for the login page on mobile]()
+![Wireframe for the list menu on mobile]()
+![Wireframe for the list on mobile]()
+![Wireframe for the share list feature on mobile]()
 
 **Desktop**
 
-![Wireframe for the start page on desktop](static/images/documentation/Desktop_start_page.png)
-![Wireframe for the sign up page on desktop](static/images/documentation/Desktop_sign_up.png)
-![Wireframe for the login page on desktop](static/images/documentation/Desktop_login.png)
-![Wireframe for the list menu on desktop](static/images/documentation/Desktop_list_menu.png)
-![Wireframe for the list on desktop](static/images/documentation/Desktop_handle_list.png)
-![Wireframe for the share list feature on desktop](static/images/documentation/Desktop_share_list.png)
-
+![Wireframe for the start page on desktop]()
+![Wireframe for the sign up page on desktop]()
+![Wireframe for the login page on desktop]()
+![Wireframe for the list menu on desktop]()
+![Wireframe for the list on desktop]()
+![Wireframe for the share list feature on desktop]()
 ### ERDs
 This site uses three models: Django's *User* model, a *list* model and a *list item* model. 
 
