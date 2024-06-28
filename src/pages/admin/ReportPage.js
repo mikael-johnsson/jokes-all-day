@@ -21,18 +21,18 @@ const ReportPage = () => {
       }
     }
     fetchReports();
-  }, [])
+  }, [setReports])
 
   return (
     <Row>
       <Col>
-      {report.results.length ? 
-        (report?.results?.map(report => (
-          <>
-            <Report key={report.id} {...report} setReport={setReports}/>
-            <br/>
-          </>
-        ))) : <h3>You haven't made any reports yet.</h3>
+        {report.results.length ? 
+        (report?.results?.map((report, idx) => (
+          <React.Fragment key={report.id}>
+            <Report {...report} setReport={setReports}/>
+            <br />
+          </React.Fragment>
+        ))) : (<h3>You haven't made any reports yet.</h3>)
       }
       </Col>
     </Row>

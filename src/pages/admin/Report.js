@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Card, Form, Media } from 'react-bootstrap'
-import { axiosRes } from '../../api/axiosDefaults';
+import { axiosReq, axiosRes } from '../../api/axiosDefaults';
 import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom';
 import btnStyles from '../../styles/Button.module.css'
 import { MoreDropdown } from '../../components/MoreDropdown';
@@ -59,10 +59,29 @@ const Report = (props) => {
     const handleEdit = () => {
         history.push(`/report/edit/${id}`)
     }
+
+    const handleHandled = async (event) => {
+        const formData = new FormData();
+        formData.append('reason', reason)
+        formData.append('content', content)
+        formData.append('joke', joke)
+        formData.append('handled', event.target.checked)
+        try{
+            await axiosReq.put(`/report/${id}/`, formData)
+            setReport((prevReport) => ({
+                ...prevReport,
+                [event.target.name]: event.target.checked
+            }))
+            console.log("report updated")
+        }
+        catch(err){
+            console.log(err)
+        }
+      }
     
 
-  return (
-    <Card>
+    return (
+    <Card> {console.log(handled)}
         <Card.Body className='align-items-center justify-content-between'>
             {is_owner || is_staff && (
                 <span className='d-flex align-items-center'>
@@ -81,14 +100,25 @@ const Report = (props) => {
             </div>
         </Card.Body>
         <Card.Body>
-        <Form>
-            <Form.Check 
-                disabled
-                type="checkbox" 
-                label="handled" 
-                value={handled}
-            />
-        </Form>
+        {is_staff ? (
+            <Form>
+                <Form.Check 
+                    type="checkbox" 
+                    label="handled"
+                    name="handled" 
+                    checked={handled}
+                    onChange={handleHandled}
+                />
+            </Form>
+        ) : (<Form>
+                <Form.Check 
+                    disabled
+                    type="checkbox" 
+                    label="handled" 
+                    checked={handled}
+                />
+            </Form>)}
+        
         </Card.Body>
     </Card>
   )

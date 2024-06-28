@@ -55,7 +55,6 @@ const ReportEditForm = () => {
         formData.append('reason', reason)
         formData.append('content', content)
         formData.append('joke', joke)
-        console.log(formData)
         try{
             await axiosReq.put(`/report/${id}`, formData)
             history.goBack();
