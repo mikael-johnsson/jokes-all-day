@@ -27,7 +27,7 @@ const ReportPage = () => {
     <Row>
       <Col>
         {report.results.length ? 
-        (report?.results?.map((report, idx) => (
+        (report?.results?.map((report) => (
           <React.Fragment key={report.id}>
             <Report {...report} setReport={setReports}/>
             <br />
