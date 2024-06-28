@@ -48,25 +48,27 @@ Find the live site [here]()
 ## User Experience
 
 ### Colour Scheme
-The colours chosen for this site are contrasting eachother and each serves their own purpose.
 
-- Off-white / #ECE5DC: used as a general background colour
-- Ocean blue / #2DAFD6: used as the background colour of the navigation bar
-- Notebook yellow / #EED878: used as the background of the lists and the landing page information. Chosen to imitate the colour of a notebook.
-- Teal / #008080: used for the lines in the notebook imitation.
 
-![Image of the colour pallette used](static/images/documentation/color-pallette-YSL.jpg)
+- 
+- 
+- 
+- 
+
+![Image of the colour pallette used]()
 ### Font
-The font used is *Roboto*. It is a clean, sans-serif font which fits perfect for a website with a simple design. The font is imported from Google Fonts.
+
 
 ## Project Planning
-This project is intended to help with the everyday life mission to go to the grocery store. With a working shopping list system you can make your shopping more efficient and be sure to come back home with the items you needed. With a sharing feature; a partner, friend or family member can do the shopping the site user planned and in that way be of service in sickness and in health.
+The object of this site is to give the users a laugh. Laughter is the best medicine is obviously not true in a literal sense, but absolutely true figuratively speaking. 
+
+Users can post jokes that the rest of the community can take part of. A star rating system gives the user instant feedback on their jokes, both separately and as an average on all the posted jokes.
 
 **Site Goals**
-* Provide a quick way to write and handle shopping lists
+* Provide a n easy way to good jokes
 * Have a nice look with good responsiveness
-* Have easy to use features, especially on mobile
-* Have a quick and secure way of sharing lists
+* Have easy to use features
+* Have an easy to use report function to keep the quality of the site high
 
 ### Agile Methods
 This project was planned with agile methods. As some features depended on others to be built, the obvious way was to start with the most fundamental features and user stories first and work upwards.
