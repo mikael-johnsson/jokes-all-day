@@ -40,7 +40,6 @@ const ReportCreateForm = () => {
         formData.append('reason', reason)
         formData.append('content', content)
         formData.append('joke', id)
-        console.log(formData)
         try{
             await axiosReq.post('/report/', formData)
             history.goBack();

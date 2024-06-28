@@ -103,7 +103,7 @@ const ReportEditForm = () => {
             {errors?.reason?.map((message, idx) => (
                 <Alert variant="warning" key={idx}>{message}</Alert>
             ))}
-            <Button type="submit">submit report</Button>
+            <Button type="submit">save report</Button>
             {errors?.no_field_error?.map((message, idx) => (
                 <Alert variant="warning" key={idx}>{message}</Alert>
             ))}
