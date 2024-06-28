@@ -117,7 +117,6 @@ const Report = (props) => {
                     checked={handled}
                 />
             </Form>)}
-            {handled ? (<p>TRUE</p>) : <p>FALSE</p>}
         </Card.Body>
     </Card>
   )
