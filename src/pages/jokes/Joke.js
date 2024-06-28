@@ -87,7 +87,7 @@ const Joke = (props) => {
         }
     }
 
-  return <Card className={styles.Joke}>
+  return <Card className={styles.Joke}> {console.log(currentUser) }
             <Card.Body>
                 <div className='d-flex align-items-center justify-content-between'>
                     <Link to={`/profiles/${profile_id}`}>

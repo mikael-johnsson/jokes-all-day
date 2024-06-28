@@ -12,6 +12,7 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosReq, axiosRes } from "../../api/axiosDefaults";
 import { useParams } from "react-router-dom/cjs/react-router-dom";
 
+
 function JokeEditForm() {
     
   const [errors, setErrors] = useState({});
@@ -20,16 +21,16 @@ function JokeEditForm() {
     content: ""
   })
   const {title, content} = jokeData;
+ 
   const history = useHistory()
   const {id} = useParams()
 
   useEffect(() => {
     const handleMount = async () => {
         try{
-            const {data} = await axiosRes.get(`/jokes/${id}`)
-            const {title, content, is_owner} = data
-
-            is_owner ? setJokeData({title, content}) : history.push('/')
+            const  {data: fetchedJoke}= await axiosRes.get(`/jokes/${id}`)
+            const {title, content, is_owner} = fetchedJoke
+            setJokeData({title, content}) // this line should use some sort of is_owner or is_staff else push to home page
         } catch(err){
             console.log(err)
         }

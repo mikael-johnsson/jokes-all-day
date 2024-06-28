@@ -19,7 +19,7 @@ function JokePage() {
         try{
             const [{data: joke}, {data: fetchedProfile}] = await Promise.all([
                 axiosReq.get(`/jokes/${id}`),
-                axiosReq.get(`/profiles/${currentUser.profile_id}`)
+                axiosReq.get(`/profiles/${currentUser?.profile_id}`)
             ])
             setJoke({results: [joke]})
             setUserProfile(fetchedProfile)
