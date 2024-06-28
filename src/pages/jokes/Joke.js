@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styles from '../../styles/Joke.module.css'
 import { useCurrentUser } from '../../context/CurrentUserContext';
 import { Card, OverlayTrigger, Tooltip } from 'react-bootstrap';
@@ -95,7 +95,7 @@ const Joke = (props) => {
                     </Link> 
                     <div className='d-flex align-items-center' style={{gap:12}}>
                         <span>{created_at}</span>
-                        {is_owner || is_staff && jokePage && <MoreDropdown handleDelete={handleDelete} handleEdit={handleEdit}/>}
+                        {(is_owner || is_staff) && jokePage && <MoreDropdown handleDelete={handleDelete} handleEdit={handleEdit}/>}
                     </div>
                 </div>
                 {title && 

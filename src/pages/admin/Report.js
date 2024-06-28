@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Card, Form, Media } from 'react-bootstrap'
+import { Card, Form } from 'react-bootstrap'
 import { axiosReq, axiosRes } from '../../api/axiosDefaults';
 import { Link, useHistory } from 'react-router-dom/cjs/react-router-dom';
-import btnStyles from '../../styles/Button.module.css'
 import { MoreDropdown } from '../../components/MoreDropdown';
 import { useCurrentUser } from '../../context/CurrentUserContext';
 
@@ -81,9 +80,9 @@ const Report = (props) => {
     
 
     return (
-    <Card> {console.log(handled)}
+    <Card>
         <Card.Body className='align-items-center justify-content-between'>
-            {is_owner || is_staff && (
+            {(is_owner || is_staff) && (
                 <span className='d-flex align-items-center'>
                     <MoreDropdown handleDelete={handleDelete} handleEdit={handleEdit}/>
                 </span>
@@ -118,7 +117,7 @@ const Report = (props) => {
                     checked={handled}
                 />
             </Form>)}
-        
+            {handled ? (<p>TRUE</p>) : <p>FALSE</p>}
         </Card.Body>
     </Card>
   )

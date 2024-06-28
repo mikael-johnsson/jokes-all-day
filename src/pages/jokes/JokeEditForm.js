@@ -4,7 +4,6 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-import styles from "../../styles/JokeCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import { Alert, FormControl, FormGroup, FormLabel } from "react-bootstrap";
@@ -29,7 +28,7 @@ function JokeEditForm() {
     const handleMount = async () => {
         try{
             const  {data: fetchedJoke}= await axiosRes.get(`/jokes/${id}`)
-            const {title, content, is_owner} = fetchedJoke
+            const {title, content} = fetchedJoke
             setJokeData({title, content}) // this line should use some sort of is_owner or is_staff else push to home page
         } catch(err){
             console.log(err)
