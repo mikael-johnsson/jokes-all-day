@@ -9,7 +9,7 @@ import { useCurrentUser } from '../../context/CurrentUserContext';
 const Report = (props) => {
     const {
         id,
-        author, 
+        author,
         content,
         reason,
         created_at,
@@ -20,15 +20,22 @@ const Report = (props) => {
         } = props;
     
     const [reportJoke, setReportJoke] = useState({})
+    const [userProfile, setUserProfile] = useState({})
     const history = useHistory();
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === author
+    const is_staff = userProfile.is_staff
+    
 
     useEffect(() => {
         const fetchJoke = async () => {
             try{
-                const {data} = await axiosRes.get(`/jokes/${joke}`)
-                setReportJoke(data)
+                const [{data: fetchedJoke}, {data: fetchedProfile}] = await Promise.all([
+                    axiosRes.get(`/jokes/${joke}`),
+                    axiosRes.get(`/profiles/${currentUser.profile_id}`)
+                ])
+                setUserProfile(fetchedProfile)
+                setReportJoke(fetchedJoke)
             } catch(err){
                 console.log(err)
                 if (err?.response.status === 404){
@@ -57,19 +64,21 @@ const Report = (props) => {
   return (
     <Card>
         <Card.Body className='align-items-center justify-content-between'>
+            {is_owner || is_staff && (
                 <span className='d-flex align-items-center'>
                     <MoreDropdown handleDelete={handleDelete} handleEdit={handleEdit}/>
                 </span>
-                <p>reported by: {author}</p>
-                <p>created: {created_at}</p>
-                <p>reason: {reason}</p>
-                <p>message: {content}</p> 
-                <div>
-                    <hr/>
-                    <p>title of joke: <Link to={`/jokes/${reportJoke.id}`}>{joke_title}</Link> </p>
-                    <p>joke: {reportJoke.content}</p>
-                    <p>author: {reportJoke.author}</p>
-                    </div>
+            )}
+            <p>reported by: {author}</p>
+            <p>created: {created_at}</p>
+            <p>reason: {reason}</p>
+            <p>message: {content}</p> 
+            <div>
+                <hr/>
+                <p>title of joke: <Link to={`/jokes/${reportJoke.id}`}>{joke_title}</Link> </p>
+                <p>joke: {reportJoke.content}</p>
+                <p>author: {reportJoke.author}</p>
+            </div>
         </Card.Body>
         <Card.Body>
         <Form>
