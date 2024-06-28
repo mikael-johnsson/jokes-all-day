@@ -8,7 +8,7 @@ import { useCurrentUser } from "../../context/CurrentUserContext"
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useProfileData, useSetProfileData } from "../../context/ProfileDataContext";
-import { Button } from "react-bootstrap";
+import { Button, OverlayTrigger, Tooltip } from "react-bootstrap";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import Joke from "../jokes/Joke";
@@ -53,7 +53,17 @@ function ProfilePage() {
     <>
       <Row noGutters className="px-3 text-center justify-content-space-between">
         <Col lg={11}>
-          <h3 className="m-2">{profile?.owner}</h3>
+          <h3 className="m-2">
+            {profile?.owner}
+            {profile?.is_staff && (
+              <OverlayTrigger
+                placement='top'
+                overlay={<Tooltip>this user is admin</Tooltip>}
+              >
+                  <i className="fa-solid fa-user-tie"/>
+            </OverlayTrigger>
+            )} 
+          </h3>
           <Row className="justify-content-center no-gutters">
             <Col className="my-2">
                 <div>{profile?.jokes_count}</div>

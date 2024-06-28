@@ -24,40 +24,6 @@ const Report = (props) => {
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === author
     const is_staff = userProfile.is_staff
-    
-
-    useEffect(() => {
-        const fetchJoke = async () => {
-            try{
-                const [{data: fetchedJoke}, {data: fetchedProfile}] = await Promise.all([
-                    axiosRes.get(`/jokes/${joke}`),
-                    axiosRes.get(`/profiles/${currentUser.profile_id}`)
-                ])
-                setUserProfile(fetchedProfile)
-                setReportJoke(fetchedJoke)
-            } catch(err){
-                console.log(err)
-                if (err?.response.status === 404){
-                    history.push('/pagenotfound')
-                }
-            }
-        }
-        fetchJoke();
-    }, [])
-
-    const handleDelete = async (event) => {
-        event.preventDefault()
-        try{
-            await axiosRes.delete(`/report/${id}`)
-            history.goBack();
-        } catch(err){
-            console.log(err)
-        }
-    }
-
-    const handleEdit = () => {
-        history.push(`/report/edit/${id}`)
-    }
 
     const handleHandled = async (event) => {
         const formData = new FormData();
@@ -77,6 +43,40 @@ const Report = (props) => {
             console.log(err)
         }
       }
+
+    const handleDelete = async (event) => {
+        event.preventDefault()
+        try{
+            await axiosRes.delete(`/report/${id}`)
+            history.goBack();
+        } catch(err){
+            console.log(err)
+        }
+    }
+
+    const handleEdit = () => {
+        history.push(`/report/edit/${id}`)
+    }
+
+    useEffect(() => {
+        const fetchJoke = async () => {
+            try{
+                const [{data: fetchedJoke}, {data: fetchedProfile}] = await Promise.all([
+                    axiosRes.get(`/jokes/${joke}`),
+                    axiosRes.get(`/profiles/${currentUser.profile_id}`)
+                ])
+                setUserProfile(fetchedProfile)
+                setReportJoke(fetchedJoke)
+            } catch(err){
+                console.log(err)
+                if (err?.response.status === 404){
+                    history.push('/pagenotfound')
+                }
+            }
+        }
+        fetchJoke();
+    }, [joke, handled, currentUser, history])
+    
     
 
     return (
