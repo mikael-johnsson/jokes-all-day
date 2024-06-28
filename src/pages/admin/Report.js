@@ -66,7 +66,7 @@ const Report = (props) => {
                 <p>message: {content}</p> 
                 <div>
                     <hr/>
-                    <p>title of joke: {joke_title} </p>
+                    <p>title of joke: <Link to={`/jokes/${reportJoke.id}`}>{joke_title}</Link> </p>
                     <p>joke: {reportJoke.content}</p>
                     <p>author: {reportJoke.author}</p>
                     </div>
