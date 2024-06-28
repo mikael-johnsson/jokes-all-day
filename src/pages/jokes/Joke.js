@@ -142,7 +142,8 @@ const Joke = (props) => {
                         </>
                     )}
                 </div>
-                <Link to={`/report/create/${id}`}>
+                {currentUser && !is_owner && (
+                    <Link to={`/report/create/${id}`}>
                     <OverlayTrigger
                         placement='top'
                         overlay={<Tooltip>report this joke</Tooltip>}
@@ -150,7 +151,8 @@ const Joke = (props) => {
                         <i className="fa-regular fa-face-angry" />
                     </OverlayTrigger>
                 </Link>
-                {!is_owner && rating_id && (
+                )}
+                {currentUser && !is_owner && rating_id && (
                     <OverlayTrigger
                         placement='top'
                         overlay={<Tooltip>clear your rating</Tooltip>}>
