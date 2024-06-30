@@ -9,15 +9,15 @@ Find the live site [here]()
 
 ## Contents
 
-* [User Experience](#user-experience)
-    * [Colour Scheme](#colour-scheme)
-    * [Font](#Font)
 * [Project Planning](#project-planning)
     * [Agile Methods](#agile-methods)
     * [MoSCoW method](moscow-method)
     * [User Stories](#user-stories)
     * [Wireframes](#wireframes)
     * [ERDs](#erds)
+* [User Experience](#user-experience)
+    * [Colour Scheme](#colour-scheme)
+    * [Font](#Font)
 * [Features](#features)
     * [CRUD functionality](#crud-functionality)
     * [Showcase](#showcase)
@@ -45,19 +45,6 @@ Find the live site [here]()
     * [Code](#code)
     * [Acknowledgements](#acknowledgements)
 
-## User Experience
-
-### Colour Scheme
-
-
-- 
-- 
-- 
-- 
-
-![Image of the colour pallette used]()
-### Font
-
 
 ## Project Planning
 The object of this site is to give the users a laugh. Laughter is the best medicine is obviously not true in a literal sense, but absolutely true figuratively speaking. 
@@ -65,7 +52,7 @@ The object of this site is to give the users a laugh. Laughter is the best medic
 Users can post jokes that the rest of the community can take part of. A star rating system gives the user instant feedback on their jokes, both separately and as an average on all the posted jokes.
 
 **Site Goals**
-* Provide a n easy way to good jokes
+* Provide an easy way to good jokes
 * Have a nice look with good responsiveness
 * Have easy to use features
 * Have an easy to use report function to keep the quality of the site high
@@ -132,6 +119,25 @@ The site was developed mobile first. The desktop wireframes are therefor bigger 
 ![Wireframe for the profile page on desktop](src/assets/documentation/readme/desktop_profile_page.png)
 ![Wireframe for the list menu on desktop](src/assets/documentation/readme/desktop_reports_page.png)
 
+## User Experience
+
+### Layout
+The site does not house a exaggerated amount of features, at least not at this point. With that in mind the site are designed to have a clean look and be easy to navigate. The navigation bar with the logo and links are always displayed at the top of the page. Depending on the logged in status, different links are shown.
+
+The jokes, the profiles and the reports have quite a similar look with e.g. a frame around it's content and all small letters.
+
+### Colour Scheme
+The colours are chosen to contrast eachother. By keeping the number of colours to a few, the consistency of the site grows and it feels more well thought out.
+
+The colour pallette is created at [coolors.co](https://coolors.co)
+
+- 
+- 
+- 
+- 
+
+![Image of the colour pallette used]()
+### Font
 
 ## Features
 ### CRUD functionality
