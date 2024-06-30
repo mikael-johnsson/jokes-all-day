@@ -132,118 +132,72 @@ The site was developed mobile first. The desktop wireframes are therefor bigger 
 ![Wireframe for the profile page on desktop](src/assets/documentation/readme/desktop_profile_page.png)
 ![Wireframe for the list menu on desktop](src/assets/documentation/readme/desktop_reports_page.png)
 
-### ERDs
-This site uses xx models:
-
-Below is the Entity Relationship Diagram:
-
-![Image of the sites ERD](static/images/documentation/your-shopping-list-ERD.png)
-
-
-**User**
-
-Django's User model is a excellent way to create and handle users at your site. Combined with the AllAuth framework, a lot of the work to create a functioning site with users is already done. 
-
-The default fields for the AllAuth sign up page is *username*, *email* and *password.* To differentiate between regular users and admin accounts the *Superuser* field was added to the ERD. These are not all of the Django User model fields, but those used in this site.
-
-**List**
-
-The List model is a custom model. It has a primary key of Djangos default id field, that increments automatically. That id is also what builds the detailed list views URL. The author field is a foreign key that connects with the user model. It is mostly used for authentification.
-
-**List item**
-
-The List item model is what creates what you actually see in the lists. It also has a primary key of the default id field. It also connects to the user model via the author field. The List model has a second foreign key connecting it to the List model. This is to make sure that the correct items are displayed when opening a list.
 
 ## Features
 ### CRUD functionality
-This site contains three different kind of objects: User, List and List item.
+This site contain six different models: User (Djangos), Profile, Joke, Rating, Report, Followers.
 
-As a logged in user you can handle List and List items. With simple buttons and forms you can create, read, update and delete your lists and list items.
-
-As a non logged in user you are only allowed to create a user. Remaining handling features of the user object is limited to the superusers through the admin page. As of now there is no way for a regular user to update username, change password or delete account.
+A User has a Profile. A Profile can create Jokes, Rate other jokes, Report other jokes and Follow other Users.
 
 ### Feature showcase
 #### Navbar
-The Navbar is simple. An only text logo and links to Sign Up, Login and (when logged in) Logout.
+The Navbar is simple. A logo of a laughing person, a title and links to different features. It is clean and responsive. Under the width of 768px, the navbar turns into a hamburger icon that the user can toggle.
 
-![Image of the sites navbar when not logged in](static/images/documentation/navbar-signup-login.jpg)
+![Image of the sites navbar when not logged in]()
 
-![Image of the sites navbar when logged in](static/images/documentation/navbar-logout.jpg)
+![Image of the sites navbar when logged in]()
 
-#### Sign Up / Login / Logout
-The Sign Up, Login and Logout pages all inherits the navbar from the rest of the site. Their own design comes mostly from the AllAuth framework.
+#### Sign Up / Login
+The Sign Up and Login pages are simple and easy to use. The site only uses a username to identify the user so only username and password are required to enter on sign up and login.
 
-![Image of the sites sign up page](static/images/documentation/sign-up-page.jpg)
-![Image of the sites login page](static/images/documentation/login-page.jpg)
-![Image of the sites logout page](static/images/documentation/logout-page.jpg)
+![Image of the sites sign up page]()
+![Image of the sites login page]()
 
 #### Home page
-The home page is what a non logged in user sees when entering the site. Back end wise this is the same page as the List menu.
+The home page is shown to both logged in and not logged in users. It displays all of the sites published jokes. At the top is a search bar that allows the user to search for jokes by titles and authors. 
 
-A short text quickly explains to the user what the site can do and why it is useful.
+![Image of the sites home page]()
 
-![Image of the sites home page](static/images/documentation/home-page.jpg)
+#### Feed page
+The feed page is exactly as the home page with the difference that it only displays jokes from user that are followed by the current user.
 
-#### List menu
-The list menu displays the user's lists with a notebook like background. The name of the list appears to be on one of the lines in the notebook. At the bottom of the menu the user finds the "Create New List"-button. That opens a modal in which the user can submit a name to the list.
+![Image of the sites feed page]()
 
-![Image of the list menu](static/images/documentation/list-menu.jpg)
-![Image of the new list modal](static/images/documentation/new-list-modal.jpg)
+#### Profile page
+The profile page is divided to two sections: the profile and the profile jokes.
 
-#### List
-In the detailed list view is where the real work of the site takes place. This is where the user creates the content of the list. The page also allows the user to edit the list, delete the list and via email share the list.
+The profile contains information about the user. It contains: the username, amount of jokes published, amount of followers, amount of users followed, the users average received rating and (if the current user is not looking at their own profile), a follow/unfollow button.
 
-The *EDIT* and *EDIT LIST* buttons allows the user to edit the list name respectively the list items.
+![Image of the sites profile page]()
 
-To share and delete the list - modals pop up and the user can enter the information needed and/or confirm the action.
+#### Report page
+A report contain an author, the report itself, when it was created, reason for report and also all the information about the reported joke.
 
-![Image of the sites list page](static/images/documentation/detailed-list.jpg)
-![Image of the sites list page when edit buttons clicked](static/images/documentation/list-edits.jpg)
-![Image of the share list modal](static/images/documentation/share-list-modal.jpg)
-![Image of the delete list modal](static/images/documentation/delete-list-modal.jpg)
-#### Error pages
-If an error were to appear, the site has a 404 / 403 / 500 page ready to go. For consistency they all look the same with slight differences in the displayed message and error code. A link takes the user back to the home page.
+At the report page a regular user can see all of their own written reports. It is easy to click into the report and use the edit / delete functionality.
 
-![Image of the sites 404 page](static/images/documentation/404-page.jpg)
+If the user is an admin they see all written reports. They can also edit / delete the report and also check the report as handled. Using the link to the joke it is easy for an admin to click into the reported joke and use the edit / delete functionality.
 
-#### Admin page
-The site uses the Django Admin page. From there a superuser can use CRUD functionality on all of the sites objects.
+![Image of the sites report page]()
 
-![Image of the sites admin page](static/images/documentation/admin-page.jpg)
+#### Error page
+If a user enters a URL not found by the site, an error message shows up. The navbar is always visible so it is easy to navigate back to whatever page is desired.
 
-#### Messages
-Django Messages are used to confirm or inform to user of it's actions. The messages are always displayed between the content and the navbar. They also have a close button to hide the message.
+![Image of the sites error page]()
 
-![Image of a message on the site](static/images/documentation/messages.jpg)
 
 ### Future features
-There are a lot of features that were considered for this site that would make it a lot better. Time has, as always, been a factor in the development and it wasn't sufficient to create and implement these features.
 
-#### Checkbox
-For a long time during the development, a checked field was part of the List item model. The idea was to allow the user to check a checkbox when an item had been bought / put in the basket when at the store. That data would then be stored until the next time the list were opened. 
+#### ENTER FEATURES
 
-Lack of understanding how to connect the input checkbox element with the checked field in the model put the feature on hold for now.
-
-#### Visual examples in home page
-
-To give a new user a better understanding of how the site looks and works, images or real examples of the list menu and detailed list could be displayed on the home page.
-
-#### Improved email feature
-As of now, the email feature gives the receiver the name of the list, the list items and a custom message. Ideally the receiver would also get the notebook look that is associated with the site, in the email. The chosen email service, EmailJS, seems to lack that feature as of now.
-
-#### A shop price scanner
-A feature that would really take the site to the next level would be the shop price scanner. The idea would be that the user inserts a list item (for example "Granny Smith apples") and the site scans the local grocery stores and suggests a store to visit depending on that stores price of the specific item. This would of course require an item library and a function to scan stores websites.
-
-#### Link to admin page
-To make it easier for a Superuser to navigate to the admin page, a link to the page could be added to the navbar or to a footer. For now the superuser needs to add /admin to the home page URL.
 
 ## Technologies used
 - **HTML5**, used to create the structure of the site
 - **CSS**, used to add custom styling
-- **Javascript**, used to add interactivity
+- **JSX**, used to add interactivity
 - **Python**, used to provide functionality
-- **Django**, framework used to create the backend shell of the site
-- **Bootstrap**, used for easy styling
+- **Django Rest Framework**, framework used to create the backend shell of the site
+- **React**, Javascript library used to create a dynamic and fast application
+- **React Bootstrap**, used for easy styling
 - **CI Database**, used for data storage
 - **Lucidchart**, used for creating ERDs
 - **Balsamiq**, used for creating wireframes
@@ -257,19 +211,13 @@ To make it easier for a Superuser to navigate to the admin page, a link to the p
 Testing of the site can be found [here](TESTING.md).
 
 ## Deployment
-### Creating the Django App
-This is how this Django App was created:
+### Creating the React App
+This is how this React App was created:
 1. [This](https://github.com/Code-Institute-Org/gitpod-full-template) Code Institute template was used
 2. When own repository had been created, a Gitpod workspace was created
-3. Django was installed: `pip3 install django gunicorn` 
-4. Supporting database libraries were installed: `pip3 install dj_database_url psycopg2`
-5. A requirements file were created: `pip freeze --local > requirements.txt`
-6. A project were created: `django-admin startproject project_name`
-7. An app were created: `python3 manage.py startapp app_name` 
-8. App were addded to INSTALLED_APPS[] in project_name > settings
-9. Changes were migrated: `python3 manage.py migrate`
-
-The app were the working. Test your app with command `python3 manage.py runserver`
+3. React was installed using a Code Institue template: `npx create-react-app . --template git+https://github.com/Code-Institute-Org/cra-template-moments.git --use-npm` 
+4. Test if app preview is starting: `npm start`
+5. If a moving React logo is displaying, the app is working
 
 ### Deploying on Heroku
 This app was deployed using Heroku.
@@ -285,7 +233,7 @@ This app was deployed using Heroku.
 These are instructions how to fork the app from Github:
 
 1. Sign in / create an account at [Github](https://www.github.com)
-2. Go to the application's repository [*your-shopping-list*](https://github.com/mikael-johnsson/your-shopping-list)
+2. Go to the application's repository [*jokes-all-day*](https://github.com/mikael-johnsson/jokes-all-day)
 3. Click "Fork" > "Create a new fork"
 4. Choose an appropriate name and click "Create Fork"
 
@@ -293,7 +241,7 @@ These are instructions how to fork the app from Github:
 These are instructions how to fork the app from Github:
 
 1. Sign in / create an account at [Github](https://www.github.com)
-2. Go to the application's repository [*your-shopping-list*](https://github.com/mikael-johnsson/your-shopping-list)
+2. Go to the application's repository [*jokes-all-day*](https://github.com/mikael-johnsson/jokes-all-day)
 3. Click "Code"
 4. Choose to clone via HTTPS, SSH-key or Github CLI
 5. Go to IDE of choice, I chose Gitpod
@@ -301,8 +249,5 @@ These are instructions how to fork the app from Github:
 
 ## Credits
 ### Code
-The log in/log out/sign up code is from Django AllAuth library and inplemented as it was in the Code Institute Blog Walkthrough.
 
-The notebook look is from [here](https://www.codesdope.com/blog/article/getting-notebook-paper-effect-with-css/).
 ### Acknowledgments
-A big thank you to my mentor Graeme Taylor for inspiration and encouragement.
