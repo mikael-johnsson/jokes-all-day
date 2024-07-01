@@ -45,7 +45,7 @@ const UsernameForm = () => {
         ...prevUser,
         username,
       }));
-      history.goBack();
+      history.push(`/profiles/${id}`, {message: 'username updated'})
     } catch (err) {
       console.log(err);
       setErrors(err.response?.data);

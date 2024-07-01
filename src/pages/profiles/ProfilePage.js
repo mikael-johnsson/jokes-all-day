@@ -14,7 +14,9 @@ import { fetchMoreData } from "../../utils/utils";
 import Joke from "../jokes/Joke";
 import { ProfileEditDropdown } from "../../components/MoreDropdown";
 import { Rating } from "react-simple-star-rating";
-import { useHistory } from "react-router-dom/cjs/react-router-dom";
+import { useHistory, useLocation } from "react-router-dom/cjs/react-router-dom";
+import AlertStyles from '../../styles/Alert.module.css'
+import { Alert } from "react-bootstrap";
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
@@ -26,6 +28,8 @@ function ProfilePage() {
   const is_owner = currentUser?.username === profile?.owner
   const [profileJokes, setProfileJokes] = useState({results: []});
   const history = useHistory();
+  const [alertMessage, setAlertMessage] = useState(null)
+  const location = useLocation()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -48,6 +52,17 @@ function ProfilePage() {
     }
     fetchData()
   }, [id, setProfileData])
+
+  // useEffect for displaying alert message
+  useEffect(() => {
+    if (location?.state && location?.state?.message) {
+      setAlertMessage(location?.state?.message);
+      const timer = setTimeout(() => {
+        setAlertMessage(null);
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [location]);
 
   const mainProfile = (
     <>
@@ -133,22 +148,25 @@ function ProfilePage() {
   );
 
   return (
-    <Row>
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <Container className={appStyles.Content}>
-          {hasLoaded ? (
-            <>
-              {mainProfile}
-              {mainProfilePosts}
-            </>
-          ) : (
-                <h4>Loading...</h4>
-          )}
-        </Container>
-      </Col>
-      <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-      </Col>
-    </Row>
+    <>
+      {alertMessage && (<Alert className={AlertStyles.alert}>{alertMessage}</Alert>)}
+      <Row>
+        <Col className="py-2 p-0 p-lg-2" lg={8}>
+          <Container className={appStyles.Content}>
+            {hasLoaded ? (
+              <>
+                {mainProfile}
+                {mainProfilePosts}
+              </>
+            ) : (
+                  <h4>Loading...</h4>
+            )}
+          </Container>
+        </Col>
+        <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
+        </Col>
+      </Row>
+    </>
   );
 }
 
