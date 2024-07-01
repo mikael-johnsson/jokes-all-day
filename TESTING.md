@@ -2,7 +2,7 @@
 
 This is the testing for the site *Jokes all day*.
 
-Link to live site [here]()
+Link to live site [here](https://jokes-all-day-frontend-26d817bb989c.herokuapp.com/)
 Find the README [here](README.md).
 ## User Story testing
 
