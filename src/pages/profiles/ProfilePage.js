@@ -67,7 +67,7 @@ function ProfilePage() {
   const mainProfile = (
     <>
       <Row noGutters className="px-3 text-center justify-content-space-between">
-        <Col lg={11}>
+        <Col lg={10}>
           <h3 className="m-2">
             {profile?.owner}
             {profile?.is_staff && (
@@ -104,7 +104,7 @@ function ProfilePage() {
             </Col>
           </Row>
         </Col>
-        <Col lg={1} className="text-lg-right">
+        <Col lg={2} className="text-lg-right">
         {(currentUser && !is_owner) ? (
             profile?.following_id ? (
             <Button 
@@ -151,7 +151,7 @@ function ProfilePage() {
     <>
       {alertMessage && (<Alert className={AlertStyles.alert}>{alertMessage}</Alert>)}
       <Row>
-        <Col className="py-2 p-0 p-lg-2" lg={8}>
+        <Col className="py-2 p-0 p-lg-2" lg={10}>
           <Container className={appStyles.Content}>
             {hasLoaded ? (
               <>
