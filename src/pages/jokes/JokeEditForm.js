@@ -55,7 +55,7 @@ function JokeEditForm() {
     formData.append('content', content)
     try{
         await axiosReq.put(`/jokes/${id}`, formData)
-        history.push(`/jokes/${id}`)
+        history.push(`/jokes/${id}`, {message: 'the joke has been updated'})
     } catch(err){
         console.log(err)
         if (err.response?.status !== 401){

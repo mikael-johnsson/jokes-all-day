@@ -13,15 +13,18 @@ import { useLocation } from "react-router-dom/cjs/react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import { useCurrentUser } from "../../context/CurrentUserContext";
+import AlertStyles from '../../styles/Alert.module.css'
+import { Alert } from "react-bootstrap";
 
 
 function JokeFeed({message, filter = ""}) {
     const [jokes, setJokes] = useState({ results: [] })
     // useLocation returns an object with info about the url. 
     // we need this to know if user us in Home or Feed
-    const {pathname} = useLocation();
+    const {pathname, state} = useLocation();
     const [query, setQuery] = useState("")
     const currentUser = useCurrentUser();
+    const [alertMessage, setAlertMessage] = useState(null)
 
     useEffect(() => {
         const fetchJokes = async () => {
@@ -34,8 +37,20 @@ function JokeFeed({message, filter = ""}) {
         }
         fetchJokes()
     }, [filter, pathname, query, currentUser])
+
+    //useEffect for displaying alertmessage
+    useEffect(() => {
+        if (state && state?.message) {
+          setAlertMessage(state?.message);
+          const timer = setTimeout(() => {
+            setAlertMessage(null);
+          }, 5000);
+          return () => clearTimeout(timer);
+        }
+      }, [state, pathname]);
   
-  return (
+  return (<>
+    {alertMessage && (<Alert className={AlertStyles.alert}>{alertMessage}</Alert>)}
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
       <Form 
@@ -68,6 +83,7 @@ function JokeFeed({message, filter = ""}) {
         )}
       </Col>
     </Row>
+    </>
   );
 }
 

@@ -48,7 +48,7 @@ const Report = (props) => {
         event.preventDefault()
         try{
             await axiosRes.delete(`/report/${id}`)
-            history.goBack();
+            history.push(`/report`, {message: 'the report was deleted'})
         } catch(err){
             console.log(err)
         }

@@ -57,7 +57,7 @@ const ReportEditForm = () => {
         formData.append('joke', joke)
         try{
             await axiosReq.put(`/report/${id}`, formData)
-            history.goBack();
+            history.push(`/report`, {message: 'the report was updated'})
         } catch(err){
             console.log(err)
             if (err.response?.status !== 401){

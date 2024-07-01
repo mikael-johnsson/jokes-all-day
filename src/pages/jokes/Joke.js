@@ -42,7 +42,6 @@ const Joke = (props) => {
                     joke;
                 })
             }))
-            history.go(0)
         } catch(err){
             console.log(err)
         }
@@ -52,7 +51,7 @@ const Joke = (props) => {
         const dividedRating = (rate / 20)
         try{
             await axiosRes.put(`/ratings/${rating_id}`, {joke: id, rating: dividedRating});
-            history.go(0)
+            history.push(`/jokes/${id}`, {message: 'Your rating was updated'})
         } catch(err){
             console.log(err)
         }
@@ -70,7 +69,7 @@ const Joke = (props) => {
                     joke;
                 })
             }))
-            history.go(0)
+            history.push(`/jokes/${id}`, {message: 'Your rating was deleted'})
         } catch(err){
             console.log(err)
         }
@@ -84,7 +83,7 @@ const Joke = (props) => {
         event.preventDefault()
         try{
             await axiosRes.delete(`/jokes/${id}`)
-            history.goBack();
+            history.push('/', {message: 'Your joke was deleted'})
         } catch(err){
             console.log(err)
         }
