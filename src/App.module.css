@@ -16,7 +16,7 @@
   background-color: #e0dcda;
   padding: 10px;
   border-radius: 2px;
-  border: 1px solid #dadadf;
+  border: 2px solid #4A4238;
 }
 
 * {
@@ -24,7 +24,7 @@
 }
 
 a {
-  color: #555555;
+  color: #4A4238;
   transition: color ease-in-out 0.3s;
 }
 
@@ -33,7 +33,7 @@ a:hover {
 }
 
 a:hover i {
-  color: #2142b2;
+  color: #352b20;
   transition: color ease-in-out 0.3s;
 }
 
@@ -42,7 +42,7 @@ input[type="file"] {
 }
 
 i {
-  color: #cfced3;
+  color: #63594e;
   font-size: 1.6rem;
   padding: 7px;
   vertical-align: middle;
@@ -51,7 +51,7 @@ i {
 i:hover {
   cursor: pointer;
   transition: color ease-in-out 0.3s;
-  color: #2142b2;
+  color: #352b20;
 }
 
 figure {
