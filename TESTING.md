@@ -51,38 +51,69 @@ W3C CSS validator checks for errors and warnings in the sites css pages. These a
 |NotFound.module.css|No errors|
 |SignInUpForm.module.css|No errors|
 
-### JSHint
-
+### Prettier
+The extension Prettier formats documents by a good coding standard. It makes the code more readable. Prettier has been used on all files in this project.
 
 ### Lighthouse
-Lighthouse is a devtools tool to measure performance, accessibility, best practices and SEO of a site. It rates between 0 and 100. These are the results of this site:
-
-**Mobile, home page**
-
-![Image of the Lighthouse score for mobile on the home page]()
-
-**Mobile, list menu page**
-
-![Image of the Lighthouse score for mobile on the profile page]()
-
-**Mobile, list page**
-
-![Image of the Lighthouse score for mobile on the report page]()
-
-**Desktop, home page**
-
-![Image of the Lighthouse score for desktop on the home page]()
-
-**Desktop, list menu page**
-
-![Image of the Lighthouse score for desktop on the profile page]()
-
-**Desktop, list page**
-
-![Image of the Lighthouse score for desktop on the report page]()
 
 
 ## Manual Testing
+### Not logged in User
+*NavBar*
+|Feature|Expected Outcome|Testing Performed|Result|
+|-|-|-|-|
+|||||
+|||||
+|||||
+|||||
+|||||
+
+*Sign up page*
+|Feature|Expected Outcome|Testing Performed|Result|
+|-|-|-|-|
+|||||
+|||||
+|||||
+|||||
+|||||
+
+*Login page*
+|Feature|Expected Outcome|Testing Performed|Result|
+|-|-|-|-|
+|||||
+|||||
+|||||
+|||||
+|||||
+
+*Home page*
+|Feature|Expected Outcome|Testing Performed|Result|
+|-|-|-|-|
+|||||
+|||||
+|||||
+|||||
+|||||
+
+### Logged in User
+*NavBar*
+|Feature|Expected Outcome|Testing Performed|Result|
+|-|-|-|-|
+|||||
+|||||
+|||||
+|||||
+|||||
+
+### Admin
+*NavBar*
+|Feature|Expected Outcome|Testing Performed|Result|
+|-|-|-|-|
+|||||
+|||||
+|||||
+|||||
+|||||
 
 
 ## Bugs
