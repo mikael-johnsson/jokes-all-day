@@ -17,11 +17,11 @@
     font-size: x-large;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 576px) {
     .NavTitleSpan {
-        margin-right: 8px;
+        margin-right: 0px;
     }
-    .NavTitle {
-        font-size: medium;
+    .NavTitle, .NavJokeLink {
+        font-size: 13px;
     } 
 }
