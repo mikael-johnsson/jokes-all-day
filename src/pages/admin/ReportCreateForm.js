@@ -42,7 +42,7 @@ const ReportCreateForm = () => {
         formData.append('joke', id)
         try{
             await axiosReq.post('/report/', formData)
-            history.goBack();
+            history.push(`/report`)
         } catch(err){
             console.log(err)
             if (err.response?.status !== 401){
@@ -54,8 +54,8 @@ const ReportCreateForm = () => {
     useEffect(() => {
         const handleMount = async () => {
             try{
-                const {data} = await axiosRes.get(`/jokes/${id}`)
-                setJoke(data)
+                const {data: reportJoke} = await axiosRes.get(`/jokes/${id}`)
+                setJoke(reportJoke)
             } catch(err){
                 console.log(err)
             }
