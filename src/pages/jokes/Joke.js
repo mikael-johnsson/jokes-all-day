@@ -69,7 +69,7 @@ const Joke = (props) => {
                     joke;
                 })
             }))
-            history.push(`/jokes/${id}`, {message: 'Your rating was deleted'})
+            history.push(`/jokes/${id}`, {message: 'the rating was deleted'})
         } catch(err){
             console.log(err)
         }

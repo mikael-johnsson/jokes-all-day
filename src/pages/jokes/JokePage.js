@@ -44,10 +44,8 @@ function JokePage() {
       const timer = setTimeout(() => {
         setAlertMessage(null);
       }, 5000);
-      console.log("nu är vi i alertMessage useEffect")
       return () => clearTimeout(timer);
     }
-    console.log("if statement ville inte")
   }, [location]);
 
   return ( 

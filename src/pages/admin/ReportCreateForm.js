@@ -42,7 +42,7 @@ const ReportCreateForm = () => {
         formData.append('joke', id)
         try{
             await axiosReq.post('/report/', formData)
-            history.push(`/report`)
+            history.push(`/report`, {message: 'report submitted'})
         } catch(err){
             console.log(err)
             if (err.response?.status !== 401){
