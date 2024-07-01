@@ -127,7 +127,7 @@ function ProfilePage() {
     </>
   );
 
-  const mainProfilePosts = (
+  const mainProfileJokes = (
     <>
       <hr />
       <h5 className="text-center">{profile?.owner}'s jokes</h5>
@@ -136,7 +136,7 @@ function ProfilePage() {
         <InfiniteScroll 
             children={
                 profileJokes.results.map((joke) => (
-                    <Joke key={joke.id} {...joke}/>
+                    <Joke key={joke.id} {...joke} setJokes={setProfileJokes}/>
                 ))
             }
             dataLength={profileJokes.results.length}
@@ -156,7 +156,7 @@ function ProfilePage() {
             {hasLoaded ? (
               <>
                 {mainProfile}
-                {mainProfilePosts}
+                {mainProfileJokes}
               </>
             ) : (
                   <h4>Loading...</h4>
