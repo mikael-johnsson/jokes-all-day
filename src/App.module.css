@@ -3,7 +3,8 @@
 
 .App {
   font-family: 'Cutive', 'Special Elite' ;
-  background-color: #f8f8f8;
+  background-color: #e0dcda;
+  color: #4A4238;
   min-height: 100vh;
 }
 
@@ -16,18 +17,6 @@
   padding: 10px;
   border-radius: 2px;
   border: 1px solid #dadadf;
-}
-
-.FillerImage {
-  object-fit: cover;
-  height: 100%;
-  width: 100%;
-}
-
-.Image {
-  max-height: 40vh;
-  max-width: 100%;
-  object-fit: contain;
 }
 
 * {
