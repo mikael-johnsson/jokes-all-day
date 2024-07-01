@@ -12,3 +12,16 @@
 .Active {
     color: #2142b2;
 }
+
+.NavTitle {
+    font-size: x-large;
+}
+
+@media (max-width: 768px) {
+    .NavTitleSpan {
+        margin-right: 8px;
+    }
+    .NavTitle {
+        font-size: medium;
+    } 
+}
