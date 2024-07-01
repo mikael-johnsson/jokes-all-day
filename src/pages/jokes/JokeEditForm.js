@@ -112,8 +112,8 @@ function JokeEditForm() {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Row>
-        <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
+      <Row className="justify-content-center">
+        <Col xs={10} sm={8} md={6} lg={5} className="d-md-block p-2 m-3">
           <Container className={appStyles.Content}>{textFields}</Container>
         </Col>
       </Row>
