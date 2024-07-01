@@ -39,7 +39,6 @@ export const CurrentUserProvider = ({ children }) => {
               if (prevCurrentUser) {
                 history.push("/login");
               } else {
-                console.log("prevCurrentUser is false in axiosReq");
                 history.push("/login");
               }
               return null;
@@ -67,7 +66,6 @@ export const CurrentUserProvider = ({ children }) => {
               if (prevCurrentUser) {
                 history.push("/login");
               } else {
-                console.log("prevCurrentUser is false in axiosRes");
                 history.push("/login");
               }
               return null;

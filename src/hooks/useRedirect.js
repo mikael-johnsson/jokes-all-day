@@ -15,8 +15,6 @@ export const useRedirect = (userAuthStatus) => {
         }
       } catch (err) {
         console.log(err);
-        console.log(userAuthStatus);
-        console.log("we are in catch in useRedirect");
         if (userAuthStatus === "loggedOut") {
           history.push("/");
         }
