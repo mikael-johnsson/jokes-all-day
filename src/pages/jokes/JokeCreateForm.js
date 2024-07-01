@@ -10,7 +10,7 @@ import { Alert, FormControl, FormGroup, FormLabel } from "react-bootstrap";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
-import Toast from "../../components/Toast";
+
 
 function JokeCreateForm() {
   useRedirect('loggedOut')  
@@ -96,7 +96,6 @@ function JokeCreateForm() {
   );
 
   return ( <>
-    <Toast />
     <Form onSubmit={handleSubmit}>
       <Row className="justify-content-center">
         <Col xs={10} sm={8} md={6} lg={5} className="d-md-block p-2 m-3">
