@@ -25,7 +25,6 @@ Find the README [here](README.md).
 |As a user, I can see a jokes average rating, so that I can see what users think of that joke|✔️|
 |As a user, I can report a joke, so that I can let admin know that I find the joke offensive|✔️|
 |Epic: *Site owner administration*||
-|As an admin, I can handle users accounts, so that I can maintain a high quality site||
 |As an admin, I can handle reports, so that I can keep track of which reports have been dealt with|✔️|
 |As an admin, I can delete a joke, so that I can maintain a high quality site|✔️|
 

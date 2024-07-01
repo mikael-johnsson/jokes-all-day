@@ -40,7 +40,7 @@ const ReportPage = () => {
   return (
     <>
       {alertMessage && (<Alert className={AlertStyles.alert}>{alertMessage}</Alert>)}
-      <Row>
+      <Row className="justify-content-center">
         <Col>
           {report.results.length ? 
           (report?.results?.map((report) => (

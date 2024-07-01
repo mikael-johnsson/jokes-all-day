@@ -150,7 +150,7 @@ function ProfilePage() {
   return (
     <>
       {alertMessage && (<Alert className={AlertStyles.alert}>{alertMessage}</Alert>)}
-      <Row>
+      <Row className="justify-content-center">
         <Col className="py-2 p-0 p-lg-2" lg={10}>
           <Container className={appStyles.Content}>
             {hasLoaded ? (

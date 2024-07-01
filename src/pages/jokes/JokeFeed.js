@@ -51,7 +51,7 @@ function JokeFeed({message, filter = ""}) {
   
   return (<>
     {alertMessage && (<Alert className={AlertStyles.alert}>{alertMessage}</Alert>)}
-    <Row className="h-100">
+    <Row className="h-100 justify-content-center">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
       <Form 
         className={styles.SearchBar} 
