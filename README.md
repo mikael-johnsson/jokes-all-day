@@ -3,9 +3,9 @@
 
 This is a project created under the Code Institute flag, being the portfolio project 5. It is for learning purposes only.
 
-Find the live site [here]()
+Find the live site [here](https://jokes-all-day-frontend-26d817bb989c.herokuapp.com)
 
-![Image of the responsiveness of the site]()
+![Image of the responsiveness of the site](src/assets/documentation/responsive_jokes.jpg)
 
 ## Contents
 
