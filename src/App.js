@@ -42,7 +42,6 @@ function App() {
               <Route exact path="/profiles/:id" render={() => <ProfilePage /> } />
               <Route exact path="/profiles/:id/edit/username" render={() => <UsernameForm />}/>
               <Route exact path="/profiles/:id/edit/password" render={() => <UserPasswordForm />}/>
-              <Route exact path="/report/:id" render={() => <Report />}/>
               <Route exact path="/report" render={() => <ReportPage />}/>
               <Route exact path="/report/create/:id" render={() => <ReportCreateForm />}/>
               <Route exact path="/report/edit/:id" render={() => <ReportEditForm />}/>
