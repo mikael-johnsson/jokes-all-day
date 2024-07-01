@@ -54,37 +54,32 @@ W3C CSS validator checks for errors and warnings in the sites css pages. These a
 ### JSHint
 
 
-### CI Python Linter
-Code Institute has a Python Linter. You can find it [here](https://pep8ci.herokuapp.com/).
-
-All of the python files were processed through the CI Python Linter. It came back with no errors.
-
 ### Lighthouse
 Lighthouse is a devtools tool to measure performance, accessibility, best practices and SEO of a site. It rates between 0 and 100. These are the results of this site:
 
 **Mobile, home page**
 
-![Image of the Lighthouse score for mobile on the home page](static/images/documentation/LH-mobile-home.jpg)
+![Image of the Lighthouse score for mobile on the home page]()
 
 **Mobile, list menu page**
 
-![Image of the Lighthouse score for mobile on the list menu page](static/images/documentation/LH-mobile-list-menu.jpg)
+![Image of the Lighthouse score for mobile on the profile page]()
 
 **Mobile, list page**
 
-![Image of the Lighthouse score for mobile on the list page](static/images/documentation/LH-mobile-list.jpg)
+![Image of the Lighthouse score for mobile on the report page]()
 
 **Desktop, home page**
 
-![Image of the Lighthouse score for desktop on the home page](static/images/documentation/LH-desktop-home.jpg)
+![Image of the Lighthouse score for desktop on the home page]()
 
 **Desktop, list menu page**
 
-![Image of the Lighthouse score for desktop on the list menu page](static/images/documentation/LH-desktop-list-menu.jpg)
+![Image of the Lighthouse score for desktop on the profile page]()
 
 **Desktop, list page**
 
-![Image of the Lighthouse score for desktop on the list page](static/images/documentation/LH-desktop-list.jpg)
+![Image of the Lighthouse score for desktop on the report page]()
 
 
 ## Manual Testing
