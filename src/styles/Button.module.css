@@ -1,32 +1,32 @@
 .Button {
-    font-size: 0.8rem;
-    align-self: center;
-    border-radius: 100px;
-    border-color: transparent;
-    padding: 4px 10px;
-    margin-left: 2px;
-    margin-right: 2px;
-    min-width: 75px;
-  }
-  
-  .Button:hover {
-    opacity: 0.8;
-    border-color: transparent;
-    cursor: pointer;
-  }
-  
-  .Button:hover:active {
-    background-color: #2142b2 !important;
-  }
-  
-  .Button:active {
-    background-color: #2142b2 !important;
-  }
-  
-  .Button:focus {
-    background-color: #2142b2;
-  }
+  font-size: 0.8rem;
+  align-self: center;
+  border-radius: 100px;
+  border-color: transparent;
+  padding: 4px 10px;
+  margin-left: 2px;
+  margin-right: 2px;
+  min-width: 75px;
+}
 
-  .Unfollow {
-    background-color: rgb(86, 162, 197);
-  }
+.Button:hover {
+  opacity: 0.8;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+.Button:hover:active {
+  background-color: #2142b2 !important;
+}
+
+.Button:active {
+  background-color: #2142b2 !important;
+}
+
+.Button:focus {
+  background-color: #2142b2;
+}
+
+.Unfollow {
+  background-color: rgb(86, 162, 197);
+}

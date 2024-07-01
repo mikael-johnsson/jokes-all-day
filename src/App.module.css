@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cutive&family=Special+Elite&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Special+Elite&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cutive&family=Special+Elite&display=swap");
 
 .App {
-  font-family: 'Cutive', 'Special Elite' ;
+  font-family: "Cutive", "Special Elite";
   background-color: #e0dcda;
-  color: #4A4238;
+  color: #4a4238;
   min-height: 100vh;
 }
 
@@ -16,7 +16,7 @@
   background-color: #e0dcda;
   padding: 10px;
   border-radius: 2px;
-  border: 2px solid #4A4238;
+  border: 2px solid #4a4238;
 }
 
 * {
@@ -24,7 +24,7 @@
 }
 
 a {
-  color: #4A4238;
+  color: #4a4238;
   transition: color ease-in-out 0.3s;
 }
 

@@ -11,73 +11,75 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosReq } from "../../api/axiosDefaults";
 import { useRedirect } from "../../hooks/useRedirect";
 
-
 function JokeCreateForm() {
-  useRedirect('loggedOut')  
+  useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
   const [jokeData, setJokeData] = useState({
     title: "",
-    content: ""
-  })
-  const {title, content} = jokeData;
-  const history = useHistory()
+    content: "",
+  });
+  const { title, content } = jokeData;
+  const history = useHistory();
 
   const handleChange = (event) => {
-    try{
-        setJokeData({
-            ...jokeData,
-            [event.target.name]: event.target.value
-        })
-    } catch(err){
-        console.log(err)
+    try {
+      setJokeData({
+        ...jokeData,
+        [event.target.name]: event.target.value,
+      });
+    } catch (err) {
+      console.log(err);
     }
-  }
+  };
 
   const handleSubmit = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
     const formData = new FormData();
-    formData.append('title', title)
-    formData.append('content', content)
-    try{
-        const {data} = await axiosReq.post('/jokes/', formData)
-        history.push(`/jokes/${data.id}`)
-    } catch(err){
-        console.log(err)
-        if (err.response?.status !== 401){
-            setErrors(err.response?.data)
-        }
+    formData.append("title", title);
+    formData.append("content", content);
+    try {
+      const { data } = await axiosReq.post("/jokes/", formData);
+      history.push(`/jokes/${data.id}`);
+    } catch (err) {
+      console.log(err);
+      if (err.response?.status !== 401) {
+        setErrors(err.response?.data);
+      }
     }
-  }
-
+  };
 
   const textFields = (
     <div className="text-center">
       <FormGroup controlId="title">
         <FormLabel>title</FormLabel>
         <FormControl
-            type="text"
-            name="title"
-            placeholder="title"
-            onChange={handleChange}
-            value={title}
+          type="text"
+          name="title"
+          placeholder="title"
+          onChange={handleChange}
+          value={title}
         />
       </FormGroup>
       {errors?.title?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>{message}</Alert>
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
       ))}
       <FormGroup controlId="content">
         <FormLabel>joke</FormLabel>
         <FormControl
-            as="textarea"
-            name="content"
-            placeholder="joke"
-            rows={6}
-            onChange={handleChange}
-            value={content}
+          as="textarea"
+          name="content"
+          placeholder="joke"
+          rows={6}
+          onChange={handleChange}
+          value={content}
         />
       </FormGroup>
       {errors?.content?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>{message}</Alert>
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
       ))}
 
       <Button
@@ -90,19 +92,23 @@ function JokeCreateForm() {
         create
       </Button>
       {errors?.no_field_error?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>{message}</Alert>
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
       ))}
     </div>
   );
 
-  return ( <>
-    <Form onSubmit={handleSubmit}>
-      <Row className="justify-content-center">
-        <Col xs={10} sm={8} md={6} lg={5} className="d-md-block p-2 m-3">
-          <Container className={appStyles.Content}>{textFields}</Container>
-        </Col>
-      </Row>
-    </Form></>
+  return (
+    <>
+      <Form onSubmit={handleSubmit}>
+        <Row className="justify-content-center">
+          <Col xs={10} sm={8} md={6} lg={5} className="d-md-block p-2 m-3">
+            <Container className={appStyles.Content}>{textFields}</Container>
+          </Col>
+        </Row>
+      </Form>
+    </>
   );
 }
 

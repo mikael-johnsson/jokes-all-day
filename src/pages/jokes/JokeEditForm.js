@@ -11,88 +11,89 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import { axiosReq, axiosRes } from "../../api/axiosDefaults";
 import { useParams } from "react-router-dom/cjs/react-router-dom";
 
-
 function JokeEditForm() {
-    
   const [errors, setErrors] = useState({});
   const [jokeData, setJokeData] = useState({
     title: "",
-    content: ""
-  })
-  const {title, content} = jokeData;
- 
-  const history = useHistory()
-  const {id} = useParams()
+    content: "",
+  });
+  const { title, content } = jokeData;
+
+  const history = useHistory();
+  const { id } = useParams();
 
   useEffect(() => {
     const handleMount = async () => {
-        try{
-            const  {data: fetchedJoke}= await axiosRes.get(`/jokes/${id}`)
-            const {title, content} = fetchedJoke
-            setJokeData({title, content}) // this line should use some sort of is_owner or is_staff else push to home page
-        } catch(err){
-            console.log(err)
-        }
-    }
+      try {
+        const { data: fetchedJoke } = await axiosRes.get(`/jokes/${id}`);
+        const { title, content } = fetchedJoke;
+        setJokeData({ title, content }); // this line should use some sort of is_owner or is_staff else push to home page
+      } catch (err) {
+        console.log(err);
+      }
+    };
     handleMount();
-  }, [id, history])
+  }, [id, history]);
 
   const handleChange = (event) => {
-    try{
-        setJokeData({
-            ...jokeData,
-            [event.target.name]: event.target.value
-        })
-    } catch(err){
-        console.log(err)
+    try {
+      setJokeData({
+        ...jokeData,
+        [event.target.name]: event.target.value,
+      });
+    } catch (err) {
+      console.log(err);
     }
-  }
+  };
 
   const handleSubmit = async (event) => {
-    event.preventDefault()
+    event.preventDefault();
     const formData = new FormData();
-    formData.append('title', title)
-    formData.append('content', content)
-    try{
-        await axiosReq.put(`/jokes/${id}`, formData)
-        history.push(`/jokes/${id}`, {message: 'the joke has been updated'})
-    } catch(err){
-        console.log(err)
-        if (err.response?.status !== 401){
-            setErrors(err.response?.data)
-        }
+    formData.append("title", title);
+    formData.append("content", content);
+    try {
+      await axiosReq.put(`/jokes/${id}`, formData);
+      history.push(`/jokes/${id}`, { message: "the joke has been updated" });
+    } catch (err) {
+      console.log(err);
+      if (err.response?.status !== 401) {
+        setErrors(err.response?.data);
+      }
     }
-  }
-
+  };
 
   const textFields = (
     <div className="text-center">
       <FormGroup controlId="title">
         <FormLabel>title</FormLabel>
         <FormControl
-            type="text"
-            name="title"
-            placeholder="title"
-            onChange={handleChange}
-            value={title}
+          type="text"
+          name="title"
+          placeholder="title"
+          onChange={handleChange}
+          value={title}
         />
       </FormGroup>
       {errors?.title?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>{message}</Alert>
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
       ))}
       <FormGroup controlId="content">
         <FormLabel>joke</FormLabel>
         <FormControl
-            as="textarea"
-            name="content"
-            placeholder="joke"
-            rows={6}
-            onChange={handleChange}
-            value={content}
+          as="textarea"
+          name="content"
+          placeholder="joke"
+          rows={6}
+          onChange={handleChange}
+          value={content}
         />
       </FormGroup>
       {errors?.content?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>{message}</Alert>
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
       ))}
 
       <Button
@@ -105,7 +106,9 @@ function JokeEditForm() {
         save
       </Button>
       {errors?.no_field_error?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>{message}</Alert>
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
       ))}
     </div>
   );

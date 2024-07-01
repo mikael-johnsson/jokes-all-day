@@ -1,11 +1,11 @@
 .alert {
-    border: 2px solid #4A4238;
-    width: fit-content;
-    padding: 9px;
+  border: 2px solid #4a4238;
+  width: fit-content;
+  padding: 9px;
 }
 
 .alertSmall {
-    right: 80px;
-    bottom: -3px;
-    position: absolute;
+  right: 80px;
+  bottom: -3px;
+  position: absolute;
 }

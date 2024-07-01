@@ -8,13 +8,13 @@ import { CurrentUserProvider } from "./context/CurrentUserContext";
 import { ProfileDataProvider } from "./context/ProfileDataContext";
 
 ReactDOM.render(
-    <Router>
-      <CurrentUserProvider>
-        <ProfileDataProvider>
-          <App />
-        </ProfileDataProvider>
-      </CurrentUserProvider>
-    </Router>,
+  <Router>
+    <CurrentUserProvider>
+      <ProfileDataProvider>
+        <App />
+      </ProfileDataProvider>
+    </CurrentUserProvider>
+  </Router>,
   document.getElementById("root")
 );
 

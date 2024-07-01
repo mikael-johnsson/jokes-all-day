@@ -20,36 +20,61 @@ import Report from "./pages/admin/Report";
 import NotFound from "./components/NotFound";
 
 function App() {
-
   const currentUser = useCurrentUser();
   const profile_id = currentUser?.profile_id || "";
-  
+
   return (
-    
-        <div className={styles.App}>
-          <NavBar />
-          <Container className={styles.Main}>
-            <Switch>
-              <Route exact path="/" render={() => <JokeFeed message="sorry, no jokes found"/>} />
-              <Route exact path="/feed" render={() => <JokeFeed 
+    <div className={styles.App}>
+      <NavBar />
+      <Container className={styles.Main}>
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={() => <JokeFeed message="sorry, no jokes found" />}
+          />
+          <Route
+            exact
+            path="/feed"
+            render={() => (
+              <JokeFeed
                 message="sorry, no jokes found. adjust the search or, if you don't already - follow a user!"
-                filter={`author__followed__owner__profile=${profile_id}&`} />} /> 
-              <Route exact path="/login" render={() => <LoginForm />} />
-              <Route exact path="/signup" render={() => <SignUpForm />} />
-              <Route exact path="/jokes/create" render={() => <JokeCreateForm /> } />
-              <Route exact path="/jokes/:id/edit" render={() => <JokeEditForm /> } />
-              <Route exact path="/jokes/:id" render={() => <JokePage /> } />
-              <Route exact path="/profiles/:id" render={() => <ProfilePage /> } />
-              <Route exact path="/profiles/:id/edit/username" render={() => <UsernameForm />}/>
-              <Route exact path="/profiles/:id/edit/password" render={() => <UserPasswordForm />}/>
-              <Route exact path="/report" render={() => <ReportPage />}/>
-              <Route exact path="/report/create/:id" render={() => <ReportCreateForm />}/>
-              <Route exact path="/report/edit/:id" render={() => <ReportEditForm />}/>
-              <Route exact path="/pagenotfound" render={() => <NotFound />} />
-              <Route render={() => <NotFound />} />
-            </Switch>
-          </Container>
-        </div>
+                filter={`author__followed__owner__profile=${profile_id}&`}
+              />
+            )}
+          />
+          <Route exact path="/login" render={() => <LoginForm />} />
+          <Route exact path="/signup" render={() => <SignUpForm />} />
+          <Route exact path="/jokes/create" render={() => <JokeCreateForm />} />
+          <Route exact path="/jokes/:id/edit" render={() => <JokeEditForm />} />
+          <Route exact path="/jokes/:id" render={() => <JokePage />} />
+          <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
+          <Route
+            exact
+            path="/profiles/:id/edit/username"
+            render={() => <UsernameForm />}
+          />
+          <Route
+            exact
+            path="/profiles/:id/edit/password"
+            render={() => <UserPasswordForm />}
+          />
+          <Route exact path="/report" render={() => <ReportPage />} />
+          <Route
+            exact
+            path="/report/create/:id"
+            render={() => <ReportCreateForm />}
+          />
+          <Route
+            exact
+            path="/report/edit/:id"
+            render={() => <ReportEditForm />}
+          />
+          <Route exact path="/pagenotfound" render={() => <NotFound />} />
+          <Route render={() => <NotFound />} />
+        </Switch>
+      </Container>
+    </div>
   );
 }
 

@@ -1,27 +1,28 @@
 .NavBar {
-    background-color: #D4CFC4;
-    border: 1px solid #dadadf;
+  background-color: #d4cfc4;
+  border: 1px solid #dadadf;
 }
-  
+
 .NavLink {
-    padding: 5px;
-    color: #2f3442;
-    font-weight: 600;
+  padding: 5px;
+  color: #2f3442;
+  font-weight: 600;
 }
-  
+
 .Active {
-    color: #2142b2;
+  color: #2142b2;
 }
 
 .NavTitle {
-    font-size: x-large;
+  font-size: x-large;
 }
 
 @media (max-width: 576px) {
-    .NavTitleSpan {
-        margin-right: 0px;
-    }
-    .NavTitle, .NavJokeLink {
-        font-size: 13px;
-    } 
+  .NavTitleSpan {
+    margin-right: 0px;
+  }
+  .NavTitle,
+  .NavJokeLink {
+    font-size: 13px;
+  }
 }

@@ -7,9 +7,8 @@ import { shouldRefreshToken, removeTokenTimestamp } from "../utils/utils";
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();
 
-export const useCurrentUser = () => useContext(CurrentUserContext)
-export const useSetCurrentUser = () => useContext(SetCurrentUserContext)
-
+export const useCurrentUser = () => useContext(CurrentUserContext);
+export const useSetCurrentUser = () => useContext(SetCurrentUserContext);
 
 export const CurrentUserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -35,13 +34,12 @@ export const CurrentUserProvider = ({ children }) => {
           try {
             await axios.post("/dj-rest-auth/token/refresh/");
           } catch (err) {
-            console.log(err)
+            console.log(err);
             setCurrentUser((prevCurrentUser) => {
               if (prevCurrentUser) {
                 history.push("/login");
-              }
-              else {
-                console.log("prevCurrentUser is false in axiosReq")
+              } else {
+                console.log("prevCurrentUser is false in axiosReq");
                 history.push("/login");
               }
               return null;
@@ -64,18 +62,17 @@ export const CurrentUserProvider = ({ children }) => {
           try {
             await axios.post("/dj-rest-auth/token/refresh/");
           } catch (err) {
-            console.log(err)
+            console.log(err);
             setCurrentUser((prevCurrentUser) => {
               if (prevCurrentUser) {
                 history.push("/login");
-              }
-              else {
-                console.log("prevCurrentUser is false in axiosRes")
+              } else {
+                console.log("prevCurrentUser is false in axiosRes");
                 history.push("/login");
               }
               return null;
             });
-            removeTokenTimestamp()
+            removeTokenTimestamp();
           }
           return axios(err.config);
         }
@@ -84,12 +81,11 @@ export const CurrentUserProvider = ({ children }) => {
     );
   }, [history]);
 
-
-  return(
+  return (
     <CurrentUserContext.Provider value={currentUser}>
       <SetCurrentUserContext.Provider value={setCurrentUser}>
         {children}
       </SetCurrentUserContext.Provider>
     </CurrentUserContext.Provider>
-  )
+  );
 };
