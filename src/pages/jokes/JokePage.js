@@ -31,7 +31,7 @@ function JokePage() {
         }
     } 
     handleMount();
-  }, [id])
+  }, [id, setJoke, joke])
 
 
   return (
