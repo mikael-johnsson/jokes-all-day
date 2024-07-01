@@ -3,3 +3,9 @@
     width: fit-content;
     padding: 9px;
 }
+
+.alertSmall {
+    right: 80px;
+    bottom: -3px;
+    position: absolute;
+}

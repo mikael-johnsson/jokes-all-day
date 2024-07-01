@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '../../styles/Joke.module.css'
 import { useCurrentUser } from '../../context/CurrentUserContext';
 import { Card, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import { MoreDropdown } from '../../components/MoreDropdown';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom';
 import { axiosRes } from '../../api/axiosDefaults';
 import { Rating } from 'react-simple-star-rating';
+import { Alert } from "react-bootstrap";
+import AlertStyles from '../../styles/Alert.module.css'
 
 
 const Joke = (props) => {
@@ -27,8 +29,21 @@ const Joke = (props) => {
 
     const currentUser = useCurrentUser();
     const is_owner = currentUser?.username === author
+    const [alertMessage, setAlertMessage] = useState(null)
+    const [message, setMessage] = useState(null)
 
     const history = useHistory();
+
+    //useEffect to display alertmessage
+    useEffect(() => {
+        if (message) {
+          setAlertMessage(message);
+          const timer = setTimeout(() => {
+            setAlertMessage(null);
+          }, 3500);
+          return () => clearTimeout(timer);
+        }
+      }, [message]);
 
     const createRating = async (rate) => {
         const dividedRating = (rate / 20)
@@ -42,6 +57,7 @@ const Joke = (props) => {
                     joke;
                 })
             }))
+            setMessage("rating created")
         } catch(err){
             console.log(err)
         }
@@ -51,7 +67,7 @@ const Joke = (props) => {
         const dividedRating = (rate / 20)
         try{
             await axiosRes.put(`/ratings/${rating_id}`, {joke: id, rating: dividedRating});
-            history.push(`/jokes/${id}`, {message: 'Your rating was updated'})
+            setMessage("rating updated")
         } catch(err){
             console.log(err)
         }
@@ -69,7 +85,7 @@ const Joke = (props) => {
                     joke;
                 })
             }))
-            history.push(`/jokes/${id}`, {message: 'the rating was deleted'})
+            setMessage("rating deleted")
         } catch(err){
             console.log(err)
         }
@@ -165,6 +181,7 @@ const Joke = (props) => {
                         className="fa-solid fa-eraser" />
                     </OverlayTrigger>
                 )}
+                {alertMessage && (<Alert className={`${AlertStyles.alert} ${AlertStyles.alertSmall}`}>{alertMessage}</Alert>)}
             </Card.Body>
         </Card>
 }
