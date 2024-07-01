@@ -3,6 +3,7 @@
 This is the testing for the site *Jokes all day*.
 
 Link to live site [here](https://jokes-all-day-frontend-26d817bb989c.herokuapp.com/)
+
 Find the README [here](README.md).
 ## User Story testing
 
@@ -31,9 +32,24 @@ Find the README [here](README.md).
 ## Automated Testing
 ### W3C HTML
 
-![Image of the W3C html validator varning]()
+W3C HTML validator checks for errors and warnings in the deployed html code. This site was run through the validator and came back with no errors or warnings. It did display info about unnecessary trailing slashes.
+
+![Image of the W3C html validator](src/assets/documentation/testing/html_validation.jpg)
 
 ### W3C CSS
+W3C CSS validator checks for errors and warnings in the sites css pages. These are the results:
+
+|File|Errors|
+|-|-|
+|App.module.css|No errors|
+|Alert.module.css|No errors|
+|Button.module.css|No errors|
+|Joke.module.css|No errors|
+|JokeFeed.module.css|No errors|
+|MoreDropdown.module.css|No errors|
+|NavBar.module.css|No errors|npm start
+|NotFound.module.css|No errors|
+|SignInUpForm.module.css|No errors|
 
 ### JSHint
 

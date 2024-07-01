@@ -26,27 +26,6 @@
   .Button:focus {
     background-color: #2142b2;
   }
-  
-  .Wide {
-    padding: 10px 50px;
-    width: 100%;
-  }
-  
-  .Delete {
-    background-color: rgb(202, 51, 51);
-  }
-
-  .Delete:hover {
-    background-color: rgb(202, 51, 51);
-  }
-
-  .Delete:hover:active {
-    background-color: rgb(202, 51, 51);
-  }
-
-  .Delete:focus {
-    background-color: rgb(202, 51, 51);
-  }
 
   .Unfollow {
     background-color: rgb(86, 162, 197);
