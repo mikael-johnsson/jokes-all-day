@@ -16,3 +16,8 @@
     cursor: default;
     color: #cfced3;
   }
+
+  .SadFace {
+    height: 15vh;
+    margin-bottom: 15px;
+  }

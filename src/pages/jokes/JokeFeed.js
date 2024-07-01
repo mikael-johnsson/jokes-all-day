@@ -7,7 +7,7 @@ import appStyles from "../../App.module.css";
 import styles from "../../styles/JokeFeed.module.css";
 import { axiosReq } from "../../api/axiosDefaults";
 import Joke from "./Joke";
-import NoResults from '../../assets/no-results.png'
+import SadFace from '../../assets/sad_face.png'
 import { Image } from "react-bootstrap";
 import { useLocation } from "react-router-dom/cjs/react-router-dom";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -61,9 +61,9 @@ function JokeFeed({message, filter = ""}) {
             next={() => fetchMoreData(jokes, setJokes)}
             />
         ) : (
-            <Container className={appStyles.Content}>
-                <Image src={NoResults} />
-                <span>{message}</span>
+            <Container className={`${appStyles.Content} text-center`}>
+                <Image className={styles.SadFace} src={SadFace} />
+                <p>{message}</p>
             </Container>
         )}
       </Col>

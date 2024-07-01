@@ -30,9 +30,9 @@ function App() {
           <NavBar />
           <Container className={styles.Main}>
             <Switch>
-              <Route exact path="/" render={() => <JokeFeed message="No results found"/>} />
+              <Route exact path="/" render={() => <JokeFeed message="sorry, no jokes found"/>} />
               <Route exact path="/feed" render={() => <JokeFeed 
-                message="No results found. Adjust search or follow a user"
+                message="sorry, no jokes found. adjust the search or, if you don't already - follow a user!"
                 filter={`author__followed__owner__profile=${profile_id}&`} />} /> 
               <Route exact path="/login" render={() => <LoginForm />} />
               <Route exact path="/signup" render={() => <SignUpForm />} />
