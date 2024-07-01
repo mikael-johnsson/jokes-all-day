@@ -15,7 +15,7 @@ const Report = (props) => {
         joke, 
         joke_title,
         handled,
-        setReport,
+        setReports,
         } = props;
     
     const [reportJoke, setReportJoke] = useState({})
@@ -33,11 +33,11 @@ const Report = (props) => {
         formData.append('handled', event.target.checked)
         try{
             await axiosReq.put(`/report/${id}/`, formData)
-            setReport((prevReport) => ({
+            setReports((prevReport) => ({
                 ...prevReport,
                 [event.target.name]: event.target.checked
             }))
-            console.log("report updated")
+            history.go(0)
         }
         catch(err){
             console.log(err)

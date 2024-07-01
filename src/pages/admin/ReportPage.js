@@ -21,7 +21,7 @@ const ReportPage = () => {
       }
     }
     fetchReports();
-  }, [setReports])
+  }, [])
 
   return (
     <Row>
@@ -29,7 +29,7 @@ const ReportPage = () => {
         {report.results.length ? 
         (report?.results?.map((report) => (
           <React.Fragment key={report.id}>
-            <Report {...report} setReport={setReports}/>
+            <Report {...report} setReports={setReports}/>
             <br />
           </React.Fragment>
         ))) : (<h3>You haven't made any reports yet.</h3>)

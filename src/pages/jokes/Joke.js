@@ -32,17 +32,17 @@ const Joke = (props) => {
 
     const createRating = async (rate) => {
         const dividedRating = (rate / 20)
-        
         try {
             const {data} = await axiosRes.post('/ratings/', {joke: id, rating: dividedRating});
             setJokes((prevJokes) => ({
                 ...prevJokes,
                 results: prevJokes.results.map((joke) => {
                     return joke.id === id ?
-                    {...joke, rating_count: joke.rating_count + 1, rating_id: data.id, average_rating: joke.average_rating} : //this row needs average rating to display the new average rating to stars
+                    {...joke, rating_count: joke.rating_count + 1, rating_id: data.id} :
                     joke;
                 })
             }))
+            history.go(0)
         } catch(err){
             console.log(err)
         }
@@ -51,7 +51,8 @@ const Joke = (props) => {
     const editRating = async (rate) => {
         const dividedRating = (rate / 20)
         try{
-            await axiosRes.put(`/ratings/${rating_id}`, {joke: id, rating: dividedRating}); // add 
+            await axiosRes.put(`/ratings/${rating_id}`, {joke: id, rating: dividedRating});
+            history.go(0)
         } catch(err){
             console.log(err)
         }
@@ -69,6 +70,7 @@ const Joke = (props) => {
                     joke;
                 })
             }))
+            history.go(0)
         } catch(err){
             console.log(err)
         }
