@@ -219,6 +219,39 @@ Joke link - due to values regarding the admin status of the current user, it is 
 
 
 ## Bugs
+### Remaining bugs
+**Login bug**
+This appears to be a bug only affecting me, the developer. As of now, I am unable to login to the deployed site on Google Chrome. An error message about "No valid refresh token found" appears.
+
+![Image of the login bug](src/assets/documentation/testing/login_bug_deployed.jpg)
+
+
 ### Fixed bugs
+**Gitpod workspace bug**
+When first creating the Gitpod workspace with the CI Full Template, it was not possible. An error message of "headless task failed: exit status 1" appeared.
+
+With the help of CI tutors, the reason was found. Something kept MongoDB being installed. It was temporarily removed from the template.
+
+![Image of the Gitpod workspace bug](src/assets/documentation/testing/gitpod_workspace_bug.jpg)
+
+**Name duplicate**
+When creating the react app (in the main directory), an error about conflicting names appeared. The solution was to create the app inside another directory, and then deleting the unwanted directory.
+
+![Image of the name duplicate bug](src/assets/documentation/testing/name_duplicate_start_bug.jpg)
+
 
 ### Flaws
+**Average rating, jokes**
+When displaying a joke, the jokes average rating is displayed by the stars. When adding a rating the average rating should change. That happens in the backend, but not in the frontend. A refresh is necessary to see the updated average rating. This is due to not being able to recount the average rating in the setState function used.
+
+**Handle value, report page**
+It has not been possible to re-render the affected report component when admin changes status on handle value. Therefor the page refreshes.
+
+**Infinite scrol, report page**
+The report page does not use the Infinite scroll function and can therefor only display the ten latest reports.
+
+**Personal attack value, reports**
+At the moment, the Report reason "personal_attack" is changed to "personal attack" by a to_representation function in the backend. That causes problems and when editing a form with that value, the "Choose a reason" value is default and an error appears when trying to submit with "Choose a reason" value.
+
+**Loading spinner**
+This site needs some sort of loading spinner that displays when loading jokes or reports. This is not implenented yet.
