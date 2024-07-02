@@ -136,6 +136,7 @@ Joke link - due to values regarding the admin status of the current user, it is 
 |*reports*-link|Redirect to reports page|Click|Pass|
 |*logout*-link|logout user|click|Pass|
 
+
 *create joke page*
 |Feature|Expected Outcome|Testing Performed|Result|
 |-|-|-|-|
@@ -144,15 +145,26 @@ Joke link - due to values regarding the admin status of the current user, it is 
 |Content field|Show error message if empty when submitted|Submit empty|Pass|
 |Form|Create joke and redirect to created joke when submitting correct data|Submit correct data|Pass|
 |*Cancel*-button|Redirect to previous page|Click|Pass|
-|*Create*-button|Submit form|Click when correct data entered|Pass|
+|*Create*-button|Submit form with correct data|Click when correct data entered|Pass|
+
+*edit joke page*
+|Feature|Expected Outcome|Testing Performed|Result|
+|-|-|-|-|
+|Form|Values for title and content displaying|Enter page|Pass|
+|Title field|Show error message if empty when submitted|Submit empty|Pass|
+|Content field|Show error message if empty when submitted|Submit empty|Pass|
+|Form|Update joke and redirect to updated joke when submitting correct data|Submit correct data|Pass|
+|*Cancel*-button|Redirect to previous page|Click|Pass|
+|*Save*-button|Submit form with correct data|Click when correct data entered|Pass|
+
 
 *Joke page*
 |Feature|Expected Outcome|Testing Performed|Result|
 |-|-|-|-|
 |Rating|If owner, not allowed to rate joke|Click stars|Pass|
 |Rating|If not owner, able to rate joke|Click stars|Pass|
-|Rating|If already rated by user, able to clear rating|click eraser|Pass|
-|Rating|If already rated by user, able to update rating|click stars|Pass|
+|Rating|If already rated by user, able to clear rating|Click eraser|Pass|
+|Rating|If already rated by user, able to update rating|Click stars|Pass|
 |Report|If not owner, able to click report joke button and be redirected to create report page|Click angry face icon|Pass|
 |Edit/delete|If owner, able to click edit/delete menu button. Menu appears.|Click|Pass|
 |Edit button|Redirect to edit joke form|Click|Pass|
@@ -178,7 +190,7 @@ Joke link - due to values regarding the admin status of the current user, it is 
 |Search bar|filter jokes based on title and joke author username|Enter text in search bar|Pass|
 
 
-*feed page*
+*Feed page*
 |Feature|Expected Outcome|Testing Performed|Result|
 |-|-|-|-|
 |Jokes|Display jokes only by users that the current user follows|Enter page|Pass|
@@ -208,6 +220,24 @@ Joke link - due to values regarding the admin status of the current user, it is 
 |*delete*-link|Delete report and redirect to home page|Click|Pass|
 |Joke link|Redirect to joke when clicking title|Click title|Pass|
 |Alert|Alert regarding succeeded deletion of report appearing at home page after redirection|Click delete|Pass|
+
+*Create report page*
+|Feature|Expected Outcome|Testing Performed|Result|
+|-|-|-|-|
+|Form|Form input for reason and content displaying|Enter page|Pass|
+|Reason field|Show error message if empty when submitted|Submit empty|Pass|
+|Content field|Show error message if empty when submitted|Submit empty|Pass|
+|Form|Create report and redirect to report page when submitting correct data|Submit correct data|Pass|
+|*Submit report*-button|Submit form with correct data|Click when correct data entered|Pass|
+
+*Edit report page*
+|Feature|Expected Outcome|Testing Performed|Result|
+|-|-|-|-|
+|Form|Values for reason and content displaying|Enter page|Fail|
+|Reason field|Show error message if empty when submitted|Submit empty|Pass|
+|Content field|Show error message if empty when submitted|Submit empty|Pass|
+|Form|Update report and redirect to report page when submitting correct data|Submit correct data|Pass|
+|*Save report*-button|Submit form with correct data|Click when correct data entered|Pass|
 
 
 ### Admin
