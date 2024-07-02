@@ -206,18 +206,39 @@ If a user enters a URL not found by the site, an error message shows up. The nav
 
 
 ## Technologies used
+### Languages
 - **HTML5**, used to create the structure of the site
 - **CSS**, used to add custom styling
 - **JSX**, used to add interactivity
+
+### Frameworks
 - **React**, Javascript library used to create a dynamic and fast application
-- **React Bootstrap**, used for easy styling
+- **React-Bootstrap**, a Bootstrap framework used to style React apps
+
+### Database
 - **CI Database**, used for data storage
+
+### Tools
+
 - **Balsamiq**, used for creating wireframes
 - **Am I responsive?**, used for responsiveness imagery
 - **Coolors**, used for creating colour pallette
 - **Gitpod**, used for writing code in
 - **Github**, used for storing code in 
 - **Heroku**, used for deployment
+- **Google Fonts**, for importing Font
+- **Font Awesome**, for icons
+
+### Supporting libraries and packages
+- **react-router-dom**, allows routing between the apps pages
+- **react-infinte-scroll**, allows more data to be loaded when scrolling down the page
+- **axios**, HTTP client that helps the app with making network requests
+- **react-simple-star-rating**, creates the star rating for jokes
+- **jwt-decode**, helps with decoding JWTs tokens
+
+
+
+
 
 ## Testing
 Testing of the site can be found [here](TESTING.md).
