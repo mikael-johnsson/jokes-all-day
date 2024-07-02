@@ -48,7 +48,7 @@ Find the live site [here](https://jokes-all-day-frontend-26d817bb989c.herokuapp.
 
 
 ## Project Planning
-The object of this site is to give the users a laugh. Laughter is the best medicine is obviously not true in a literal sense, but absolutely true figuratively speaking. 
+The objective of this site is to give the users a laugh. *Laughter is the best medicine* is obviously not true in a literal sense, but absolutely true figuratively speaking. 
 
 Users can post jokes that the rest of the community can take part of. A star rating system gives the user instant feedback on their jokes, both separately and as an average on all the posted jokes.
 
@@ -59,7 +59,7 @@ Users can post jokes that the rest of the community can take part of. A star rat
 * Have an easy to use report function to keep the quality of the site high
 
 ### Agile Methods
-This project was planned with agile methods. As some features depended on others to be built, the obvious way was to start with the most fundamental features and user stories first and work upwards.
+This project was developed with agile methods. As some features depended on others to be built, the obvious way was to start with the most fundamental features and user stories first and work upwards.
 
 Only one iteration has been completed and future features are planned to take place in the second iteration.
 
@@ -124,7 +124,7 @@ The site was developed mobile first. The desktop wireframes are therefor bigger 
 ### Layout
 The site does not house a exaggerated amount of features, at least not at this point. With that in mind the site are designed to have a clean look and be easy to navigate. The navigation bar with the logo and links are always displayed at the top of the page. Depending on the logged in status, different links are shown.
 
-The jokes, the profiles and the reports have quite a similar look with e.g. a frame around it's content and all small letters.
+The jokes, the profiles and the reports have quite a similar look with e.g. a frame around it's content and all lowercase letters.
 
 ### Colour Scheme
 The colours are chosen to contrast eachother. By keeping the number of colours to a few, the consistency of the site grows and it feels more well thought out.
@@ -209,12 +209,9 @@ If a user enters a URL not found by the site, an error message shows up. The nav
 - **HTML5**, used to create the structure of the site
 - **CSS**, used to add custom styling
 - **JSX**, used to add interactivity
-- **Python**, used to provide functionality
-- **Django Rest Framework**, framework used to create the backend shell of the site
 - **React**, Javascript library used to create a dynamic and fast application
 - **React Bootstrap**, used for easy styling
 - **CI Database**, used for data storage
-- **Lucidchart**, used for creating ERDs
 - **Balsamiq**, used for creating wireframes
 - **Am I responsive?**, used for responsiveness imagery
 - **Coolors**, used for creating colour pallette
@@ -231,18 +228,16 @@ This is how this React App was created:
 1. [This](https://github.com/Code-Institute-Org/gitpod-full-template) Code Institute template was used
 2. When own repository had been created, a Gitpod workspace was created
 3. React was installed using a Code Institue template: `npx create-react-app . --template git+https://github.com/Code-Institute-Org/cra-template-moments.git --use-npm` 
-4. Test if app preview is starting: `npm start`
-5. If a moving React logo is displaying, the app is working
+4. Tested if app preview is starting: `npm start`
+5. A moving React logo was displayed, so the app was working
 
 ### Deploying on Heroku
 This app was deployed using Heroku.
 1. Create an account and / or login to Heroku.
 2. Click "New" and "Create new app"
 3. Choose a name and a region
-4. If not last deployment, add DISABLE_COLLECTSTATIC = 1 to config vars in settings
-5. Add your DATABASE_URL (if any) and SECRET_KEY to config vars
-6. In deployment, connect Heroku App to you Github repository
-7. Deploy through automatic or manual deployment
+4. In deploy, connect Heroku App to you Github repository
+5. Deploy through automatic or manual deployment
 
 ### How to fork
 These are instructions how to fork the app from Github:
