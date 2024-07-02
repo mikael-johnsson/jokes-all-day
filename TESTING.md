@@ -55,6 +55,31 @@ W3C CSS validator checks for errors and warnings in the sites css pages. These a
 The extension Prettier formats documents by a good coding standard. It makes the code more readable. Prettier has been used on all files in this project.
 
 ### Lighthouse
+Lighthouse is a tool in Google Chrome Devtools that analyze a website on it's Performance, Accessibility, Best Practices and SEO. These are this sites results:
+
+*Home page, desktop*
+![Lighthouse score for desktop, home page: Performance 79, Accessibility 93, Best Practices 100, SEO 100](src/assets/documentation/testing/LH_home_page_desktop.jpg)
+
+*Profile page, desktop*
+![Lighthouse score for desktop, profile page: Performance 84, Accessibility 98, Best Practices 100, SEO 100](src/assets/documentation/testing/LH_profile_page_desktop.jpg)
+
+*Report page, desktop*
+![Lighthouse score for desktop, report page: Performance 92, Accessibility 95, Best Practices 100, SEO 100](src/assets/documentation/testing/LH_report_page_desktop.jpg)
+
+*Home page, mobile*
+![Lighthouse score for mobile, home page page: Performance 55, Accessibility 93, Best Practices 100, SEO 100](src/assets/documentation/testing/LH_home_page_mobile.jpg)
+
+*Profile page, mobile*
+![Lighthouse score for mobile, profile page: Performance 55, Accessibility 98, Best Practices 100, SEO 100](src/assets/documentation/testing/LH_profile_page_mobile.jpg)
+
+*Report page, mobile*
+![Lighthouse score for mobile, report page: Performance 58, Accessibility 95, Best Practices 100, SEO 100](src/assets/documentation/testing/LH_report_page_mobile.jpg)
+
+**Conclusion:**
+
+There is absolutely work to be done in the performance area. As of now, the site is a bit too slow. Actions to be taken in a later iteration:
+- Improve imports. React bootstraps imports are not written in the most efficient way. This means longer loading times as unnecessary data is being loaded.
+- More efficient code. A lot of data handling of the site ends with a page reload. A more efficient code would use the full strength of React and only re-render affected components.
 
 
 ## Manual Testing
