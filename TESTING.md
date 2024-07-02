@@ -288,3 +288,6 @@ This site needs some sort of loading spinner that displays when loading jokes or
 
 **Access edit report form**
 As of now, it is possible for a user, who is not and admin nor the owner of the report, to enter the edit report form. It is not possible to actually edit it though.
+
+**Cancel button on report forms**
+As of now, the create report form and edit report form does not have a cancel button. If the user wants to cancel the form handling, they need to use the navbar.
