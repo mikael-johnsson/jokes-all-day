@@ -131,13 +131,17 @@ The colours are chosen to contrast eachother. By keeping the number of colours t
 
 The colour pallette is created at [coolors.co](https://coolors.co)
 
-- 
-- 
-- 
-- 
+- E0DCDA - Light grey, used for background
+- D4CFC4 - Light grey, used for navbar background
+- 4A4238 - Brown, used for text and borders
+- 8E5C42 - Orange brown, used for details
 
-![Image of the colour pallette used]()
+![Image of the colour pallette used](src/assets/documentation/readme/color_pallette_jokes_final.jpg)
 ### Font
+
+The used font is "Cutive". It is imported from Google Fonts.
+
+![Image of the font Cutive](src/assets/documentation/readme/font_cutive.jpg)
 
 ## Features
 ### CRUD functionality
@@ -149,32 +153,32 @@ A User has a Profile. A Profile can create Jokes, Rate other jokes, Report other
 #### Navbar
 The Navbar is simple. A logo of a laughing person, a title and links to different features. It is clean and responsive. Under the width of 768px, the navbar turns into a hamburger icon that the user can toggle.
 
-![Image of the sites navbar when not logged in]()
+![Image of the sites navbar when not logged in](src/assets/documentation/readme/navbar_not_logged_in.jpg)
 
-![Image of the sites navbar when logged in]()
+![Image of the sites navbar when logged in](src/assets/documentation/readme/navbar_logged_in.jpg)
 
 #### Sign Up / Login
 The Sign Up and Login pages are simple and easy to use. The site only uses a username to identify the user so only username and password are required to enter on sign up and login.
 
-![Image of the sites sign up page]()
-![Image of the sites login page]()
+![Image of the sites sign up page](src/assets/documentation/readme/signup_page_final.jpg)
+![Image of the sites login page](src/assets/documentation/readme/login_page_final.jpg)
 
 #### Home page
 The home page is shown to both logged in and not logged in users. It displays all of the sites published jokes. At the top is a search bar that allows the user to search for jokes by titles and authors. 
 
-![Image of the sites home page]()
+![Image of the sites home page](src/assets/documentation/readme/home_page.jpg)
 
 #### Feed page
 The feed page is exactly as the home page with the difference that it only displays jokes from user that are followed by the current user.
 
-![Image of the sites feed page]()
+![Image of the sites feed page](src/assets/documentation/readme/feed_page.jpg)
 
 #### Profile page
 The profile page is divided to two sections: the profile and the profile jokes.
 
 The profile contains information about the user. It contains: the username, amount of jokes published, amount of followers, amount of users followed, the users average received rating and (if the current user is not looking at their own profile), a follow/unfollow button.
 
-![Image of the sites profile page]()
+![Image of the sites profile page](src/assets/documentation/readme/profile_page.jpg)
 
 #### Report page
 A report contain an author, the report itself, when it was created, reason for report and also all the information about the reported joke.
@@ -183,17 +187,22 @@ At the report page a regular user can see all of their own written reports. It i
 
 If the user is an admin they see all written reports. They can also edit / delete the report and also check the report as handled. Using the link to the joke it is easy for an admin to click into the reported joke and use the edit / delete functionality.
 
-![Image of the sites report page]()
+![Image of the sites report page](src/assets/documentation/readme/report_page.jpg)
 
 #### Error page
 If a user enters a URL not found by the site, an error message shows up. The navbar is always visible so it is easy to navigate back to whatever page is desired.
 
-![Image of the sites error page]()
+![Image of the sites error page](src/assets/documentation/readme/error_page.jpg)
 
 
 ### Future features
 
-#### ENTER FEATURES
+- In the reports, being able to see how many reports a joke has
+- A loading spinner when data is loading
+- A section where the top rated jokes are displayed
+- A section where the most followed / top rated users are displayed
+- A message to be sent to the user who reported a joke when the report has been handled
+- An overlay message that it is not possible to rate ones own joke
 
 
 ## Technologies used
@@ -255,5 +264,22 @@ These are instructions how to fork the app from Github:
 
 ## Credits
 ### Code
+**Code Institute**
+
+This site is heavily inspired by the Code Institute "Moments" walkthrough project. Similarities can be found in features, design, layout and code.
+
+Hard credits go to CI for:
+- User accounts and authorization
+- The use of context
+- The use of utils
+- The use of Axios
+- The MoreDropDown component
+- The hooks
+- The general structure of the code (a joke goes in a joke page and a jokefeed etc.)
+
+**Alerts useEffect functionality**
+
+The way the Alerts useEffect functionality works is all due to Sandra Bergström and her [Travel Ticker-project](https://github.com/SandraBergstrom/travel-tickr)
 
 ### Acknowledgments
+Thank you to my mentor Gareth McGirr for contributing with important insight of the code.

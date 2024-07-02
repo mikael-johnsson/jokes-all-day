@@ -255,3 +255,6 @@ At the moment, the Report reason "personal_attack" is changed to "personal attac
 
 **Loading spinner**
 This site needs some sort of loading spinner that displays when loading jokes or reports. This is not implenented yet.
+
+**Access edit report form**
+As of now, it is possible for a user, who is not and admin nor the owner of the report, to enter the edit report form. It is not possible to actually edit it though.
