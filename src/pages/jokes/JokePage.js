@@ -26,7 +26,7 @@ function JokePage() {
     const handleMount = async () => {
       try {
         const [{ data: joke }, { data: fetchedProfile }] = await Promise.all([
-          axiosReq.get(`/jokes/${id}`),
+          axiosReq.get(`/jokes/${id}`), 
           axiosReq.get(`/profiles/${currentUser?.profile_id}`),
         ]);
         setJoke({ results: [joke] });

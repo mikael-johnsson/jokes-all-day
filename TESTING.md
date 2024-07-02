@@ -87,58 +87,135 @@ There is absolutely work to be done in the performance area. As of now, the site
 *NavBar*
 |Feature|Expected Outcome|Testing Performed|Result|
 |-|-|-|-|
-|||||
-|||||
-|||||
-|||||
-|||||
+|Navbar|Displaying when entering site|Enter site|Pass|
+|Correct links|Links *home*, *login* and *sign up* should display|Enter site|Pass|
+|*Home*-link|Redirect to home page|Click|Pass|
+|*Login*-link|Redirect to login page|Click|Pass|
+|*Sign up*-link|Redirect to sign up page|Click|Pass|
 
 *Sign up page*
 |Feature|Expected Outcome|Testing Performed|Result|
 |-|-|-|-|
-|||||
-|||||
-|||||
-|||||
-|||||
+|Username field|Show error message if empty when submitted|Submit empty|Pass|
+|Password field|Show error message if empty when submitted|Submit empty|Pass|
+|Repeat password field|Show error message if empty when submitted|Submit empty|Pass|
+|Password field|Display error message when password criteria not met|Enter password to short/common/similar to username|Pass|
+|*Sign up*-button|Attempt to submit data|Click|Pass|
+|Form|Create account when all fields entered correctly and submitted|Enter fields correctly and submit|Pass|
+|*Login*-link|Redirect to login page|Click|Pass|
 
 *Login page*
 |Feature|Expected Outcome|Testing Performed|Result|
 |-|-|-|-|
-|||||
-|||||
-|||||
-|||||
-|||||
+|Username field|Show error message if empty when submitted|Submit empty|Pass|
+|Password field|Show error message if empty when submitted|Submit empty|Pass|
+|Form|Show error message if not matching data is submitted|Submit faulty login credentials|Pass|
+|Form|Login user when correct login credentials are submitted|Submit correct credentials|Pass|
+|*Sign up*-link|Redirect to sign up page|Click|Pass|
 
 *Home page*
 |Feature|Expected Outcome|Testing Performed|Result|
 |-|-|-|-|
-|||||
-|||||
-|||||
-|||||
-|||||
+|Jokes|Display all the sites jokes, ordered from last created|Click *home*-link|Pass|
+|Ratings|Not able to rate jokes|Click stars|Pass|
+|Profile link|Redirected to joke author's profile|Click joke author name|Pass|
+|Joke link|Redirected to joke page|Click joke title|Fail|
+|Infinite scroll|First display first ten jokes, when scrolling down - load more|scroll down|Pass|
+
+Joke link - due to values regarding the admin status of the current user, it is not possible to view the joke page when not logged in.
 
 ### Logged in User
 *NavBar*
 |Feature|Expected Outcome|Testing Performed|Result|
 |-|-|-|-|
-|||||
-|||||
-|||||
-|||||
-|||||
+|Correct links|Links *write joke*, *home*, *feed*, *profile*, *reports* and *logout* should display |login user|Pass|
+|*write joke*-link|redirect to create joke page|click|Pass|
+|*home*-link|Redirect to home page|Click|Pass|
+|*feed*-link|Redirect to feed page|Click|Pass|
+|*profile*-link|Redirect to users profile page|Click|Pass|
+|*reports*-link|Redirect to reports page|Click|Pass|
+|*logout*-link|logout user|click|Pass|
 
-### Admin
-*NavBar*
+*create joke page*
 |Feature|Expected Outcome|Testing Performed|Result|
 |-|-|-|-|
-|||||
-|||||
-|||||
-|||||
-|||||
+|Form|Form input for title and content displaying|Enter page|Pass|
+|Title field|Show error message if empty when submitted|Submit empty|Pass|
+|Content field|Show error message if empty when submitted|Submit empty|Pass|
+|Form|Create joke and redirect to created joke when submitting correct data|Submit correct data|Pass|
+|*Cancel*-button|Redirect to previous page|Click|Pass|
+|*Create*-button|Submit form|Click when correct data entered|Pass|
+
+*Joke page*
+|Feature|Expected Outcome|Testing Performed|Result|
+|-|-|-|-|
+|Rating|If owner, not allowed to rate joke|Click stars|Pass|
+|Rating|If not owner, able to rate joke|Click stars|Pass|
+|Rating|If already rated by user, able to clear rating|click eraser|Pass|
+|Rating|If already rated by user, able to update rating|click stars|Pass|
+|Report|If not owner, able to click report joke button and be redirected to create report page|Click angry face icon|Pass|
+|Edit/delete|If owner, able to click edit/delete menu button. Menu appears.|Click|Pass|
+|Edit button|Redirect to edit joke form|Click|Pass|
+|Delete button|Delete joke and redirect to home page|Click|Pass|
+|Profile link|Redirected to joke author's profile|Click joke author name|Pass|
+|Joke link|Redirected to joke page|Click joke title|Pass|
+|Alerts|Alerts displaying correct message when rating created, edited or deleted|Handle ratings|Pass|
+
+
+*Home page*
+|Feature|Expected Outcome|Testing Performed|Result|
+|-|-|-|-|
+|Jokes|Display all the sites jokes, ordered from last created|Click *home*-link|Pass|
+|Rating|If owner, not allowed to rate joke|Click stars|Pass|
+|Rating|If not owner, able to rate joke|Click stars|Pass|
+|Rating|If already rated by user, able to clear rating|click eraser|Pass|
+|Rating|If already rated by user, able to update rating|click stars|Pass|
+|Report|If not owner, able to click report joke button and be redirected to create report page|Click angry face icon|Pass|
+|Profile link|Redirected to joke author's profile|Click joke author name|Pass|
+|Joke link|Redirected to joke page|Click joke title|Pass|
+|Alerts|Alerts displaying correct message when rating created, edited or deleted|Handle ratings|Pass|
+|Infinite scroll|First display first ten jokes, when scrolling down - load more|scroll down|Pass|
+|Search bar|filter jokes based on title and joke author username|Enter text in search bar|Pass|
+
+
+*feed page*
+|Feature|Expected Outcome|Testing Performed|Result|
+|-|-|-|-|
+|Jokes|Display jokes only by users that the current user follows|Enter page|Pass|
+
+
+*Profile page*
+|Feature|Expected Outcome|Testing Performed|Result|
+|-|-|-|-|
+|Username|Profile owners username displays|Enter page|Pass|
+|*follow*-button|If not following profile owner: display, follow user, change to *unfollow*|Click|Pass|
+|*unfollow*-button|If following profile owner: display, unfollow user, change to *follow*|Click|Pass|
+|Edit button|If owner, able to click edit menu button. Menu appears.|Click|Pass|
+|*change username*-link|Redirect to change username form|Click|Pass|
+|*change password*-link|Redirect to change password form|Click|Pass|
+|Statistics|Amount of jokes, followers and following displays|Enter page|Pass|
+|Rating|Average received rating displays|Enter page|Pass|
+|Jokes|Jokes by the profile owner displays|Enter page|Pass|
+
+
+*Report page*
+|Feature|Expected Outcome|Testing Performed|Result|
+|-|-|-|-|
+|Reports|Reports written by current user displays|Enter page|Pass|
+|Report|Reports contain all report data and title, content and author of reported joke|Enter page|Pass|
+|Edit/delete|If owner, able to click edit menu button. Menu appears.|Click|Pass|
+|*edit*-link|Redirect to edit report form|Click|Pass|
+|*delete*-link|Delete report and redirect to home page|Click|Pass|
+|Joke link|Redirect to joke when clicking title|Click title|Pass|
+|Alert|Alert regarding succeeded deletion of report appearing at home page after redirection|Click delete|Pass|
+
+
+### Admin
+|Feature|Expected Outcome|Testing Performed|Result|
+|-|-|-|-|
+|Reports|Able to edit and delete all reports, not just created by admin|Handle reports|Pass|
+|Reports, handled|Able to mark reports as handled|Handle jokes|Pass|
+|Jokes|Able to edit and delete all jokes, not just created by admin|Handle jokes|Pass|
 
 
 ## Bugs
